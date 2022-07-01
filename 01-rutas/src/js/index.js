@@ -20,32 +20,21 @@ const escuchaPeticion = (req, res) => {
     if (req.url !== '/favicon.ico') { // evita doble petición
         res.setHeader("Content-Type", "text/html");
 
-        let ruta = './src/';
-        switch(req.url) {
-            case '/':
-                ruta += 'index.html';
-                break;
-            case '/contacto':
-                ruta += 'contacto.html';
-                break;
-            case '/donde':
-                ruta += 'donde.html';
-                break;
-            case '/que':
-                ruta += 'que.html';
-                break;
-            case '/quien':
-                ruta += 'quien.html';
-                break;
-            case '/archivo':
-                ruta = 'archivo';
-                break;
-            default:
-                escribeAviso('No encontrado', 404);
-                return;
+        const rutas = ['/', '/archivo', '/contacto', '/donde', '/que', '/quien'];
+        let ruta = './src';
+
+        if (!rutas.includes(req.url)) {
+            escribeAviso('No encontrado', 404);
+            return;
+        } else if (req.url == '/') {
+            ruta += '/index.html';
+        } else if (req.url == '/archivo') {
+            ruta = req.url;
+        } else {
+            ruta += `${req.url}.html`;
         }
 
-        if (ruta == 'archivo') {
+        if (ruta == '/archivo') {
             fs.writeFile('./archivo.txt', 'Texto de prueba.')
                 .then( escribeAviso('Archivo guardado') )
                 .catch(err => {
