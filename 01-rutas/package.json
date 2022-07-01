@@ -1,0 +1,12 @@
+{
+  "name": "01-rutas",
+  "version": "1.0.0",
+  "description": "ejercicio de rutas con node",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/js/index.js"
+  },
+  "author": "javguerra",
+  "license": "ISC"
+}
