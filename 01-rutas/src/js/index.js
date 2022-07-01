@@ -28,13 +28,11 @@ const escuchaPeticion = (req, res) => {
             return;
         } else if (req.url == '/') {
             ruta += '/index.html';
-        } else if (req.url == '/archivo') {
-            ruta = req.url;
         } else {
             ruta += `${req.url}.html`;
         }
 
-        if (ruta == '/archivo') {
+        if (ruta == './src/archivo.html') {
             fs.writeFile('./archivo.txt', 'Texto de prueba.')
                 .then( escribeAviso('Archivo guardado') )
                 .catch(err => {
