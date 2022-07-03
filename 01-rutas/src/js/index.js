@@ -10,7 +10,7 @@
     https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module-es
 */
 
-const http = require("http");
+const http = require('http');
 const fs   = require('fs').promises;
 const host = 'localhost';
 const port = 3000;
@@ -19,7 +19,7 @@ const escuchaPeticion = (req, res) => {
 
     if (req.method === 'GET') {
         if (req.url !== '/favicon.ico') { // evita doble petición
-            
+
             res.setHeader("Content-Type", "text/html");
 
             const rutas = ['/', '/archivo', '/contacto', '/donde', '/que', '/quien'];
@@ -36,7 +36,7 @@ const escuchaPeticion = (req, res) => {
 
             if (ruta == './src/archivo.html') {
                 fs.writeFile('./archivo.txt', 'Texto de prueba.')
-                    .then( escribeAviso('Archivo guardado') )
+                    .then(escribeAviso('Archivo guardado'))
                     .catch(err => {
                         escribeAviso(err.code, 500);
                         return;
@@ -57,7 +57,7 @@ const escuchaPeticion = (req, res) => {
                 let msg = num < 300 ? 'OK' : 'Error';
                 console.log(`${msg} ${num}.`);
                 res.statusCode = num;
-                res.end(`<h1>${msg} ${num}: ${err}</h1>`);  
+                res.end(`<h1>${msg} ${num}: ${err}</h1>`);
             }
 
         }
