@@ -8,12 +8,16 @@
     - Realiza las modificaciones necesarias para que nuestro script se ejecute con npm start.
 
     https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module-es
+    https://www.victorvr.com/tutorial/variables-de-entorno-con-nodejs
 */
 
+const config = require('./config.js');
 const http = require('http');
 const fs   = require('fs').promises;
-const host = 'localhost';
-const port = 3000;
+
+// const host = 'localhost';
+// const port = 3000;
+
 
 const escuchaPeticion = (req, res) => {
 
@@ -65,6 +69,6 @@ const escuchaPeticion = (req, res) => {
 };
 
 const server = http.createServer(escuchaPeticion);
-server.listen(port, host, () => {
-    console.log(`Servidor: http://${host}:${port}`);
+server.listen(config.PORT, config.HOST, () => {
+    console.log(`Servidor: http://${config.HOST}:${config.PORT}`);
 });
