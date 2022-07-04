@@ -24,7 +24,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-notas.txt
 
 # WSL
 *:Zone.Identifier
