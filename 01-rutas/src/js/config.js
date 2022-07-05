@@ -1,7 +1,5 @@
-//const dotenv = require('dotenv').config();
-
 if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config();
+  const dotenv = require('dotenv').config();
 }
 
 module.exports = {
