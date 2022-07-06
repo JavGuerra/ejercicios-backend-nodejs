@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./app.js",
-    "dev": "NODE_ENV=development node ./app.js",
-    "prod": "NODE_ENV=production node ./app.js"
+    "dev": "NODE_ENV=development npx nodemon ./app.js",
+    "prod": "NODE_ENV=production npx nodemon ./app.js"
   },
   "keywords": [],
   "author": "",
@@ -15,5 +15,8 @@
   "dependencies": {
     "dotenv": "^16.0.1",
     "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
   }
 }
