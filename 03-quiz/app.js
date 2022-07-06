@@ -8,7 +8,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use(express.static(__dirname + '/quiz'));
+app.use('/quiz', express.static(__dirname + '/public'));
 
 app.use('/home', router);
 
@@ -21,14 +21,10 @@ router.get('/info', (req, res) => {
     res.send('Página de info');
 });
 
-router.get('/error', (err, req, res, next) => {
+router.get('/error', (req, res, next) => {
     console.log('Página de error');
-    console.error(err.stack);
+    const err = new Error('¡Ups!');
     next(err);
-});
-
-app.use((req, res) => {
-    res.send('Página de cierre.');
 });
 
 app.use((err, req, res, next) => {
@@ -36,8 +32,12 @@ app.use((err, req, res, next) => {
     res.status(500).send('Error 500: Algo salió mal.');
 });
   
-app.use((req, res, next) => {
+app.use((err, req, res, next) => {
     res.status(404).send('Error 404: No encontrado.');
+});
+
+app.use('/', (req, res) => {
+    res.send('Página de cierre.');
 });
 
 app.listen(config.PORT);
