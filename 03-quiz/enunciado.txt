@@ -1,0 +1,24 @@
+ENUNCIADO
+Debemos crear nuestra aplicación express dentro de un fichero principal llamado app.js,
+ahí definiremos endpoint principal que se cumpla siempre, otro igual al final.
+
+La idea del ejercicio es definir dos flujos, por un lado tendremos un direccionamiento
+que servirá el estático de nuestro Quiz (/Quiz), por otro tendremos un direccionamiento
+a /home para este último gestionado por un enrutador que hará lo siguiente:
+
+- /home/contacto : console.log('Estamos en la página de contacto');
+- /home/info : console.log('Estamos en la página de info');
+- /home/error : Debe provocar un error para llevarnos hasta el middleware de error
+
+Nuestro app.js tiene que estar definido de tal manera que:
+
+- Siempre debemos pasar por el endpoint de apertura
+- Solo lanzaremos el endpoint de cierre en caso de pasar por /home/contacto o en caso de error.
+
+Todo esto debe estar gestionado por un servidor que levantaremos a través de Express que
+debe estar configurado para dos entornos:
+    Desarrollo:         Producción:
+    Host: localhost     Host: 127.0.0.1
+    puerto: 3000        puerto: 8000
+
+Esto debe estar gestionado a través de variables de entorno (DOTENV)

@@ -1,0 +1,19 @@
+{
+  "name": "03-quiz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./app.js",
+    "dev": "NODE_ENV=development node ./app.js",
+    "prod": "NODE_ENV=production node ./app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1"
+  }
+}

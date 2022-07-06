@@ -4,7 +4,7 @@
   "description": "ejercicio de rutas con node",
   "main": "index.js",
   "scripts": {
-    "test": "export HOST=localhost && export PORT=8003 && node ./src/js/index.js",
+    "test": "HOST=localhost PORT=8003 node ./src/js/index.js",
     "start": "node ./src/js/index.js"
   },
   "author": "javguerra",

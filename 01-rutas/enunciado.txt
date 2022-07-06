@@ -1,0 +1,10 @@
+- Crea rutas básicas para servir una página web clásica
+(Home| ¿Quiénes somos? | ¿Dónde Estamos? | ¿Qué hacemos? | Contacto... etc...)
+- Añadir un recurso en el servidor que cree un fichero a través de una petición del usuario
+- Modifica el apartado anterior y crea código HTML para cada petición a la ruta (endpoint) en concreto
+- Ahora modifica el apartado anterior y sirve en respuesta a la petición de cada ruta(endpoint)
+los ficheros HTML correspondientes: home.html, contact.html, about.html...
+- Realiza las modificaciones necesarias para que nuestro script se ejecute con npm start.
+
+https://www.digitalocean.com/community/tutorials/how-to-create-a-web-server-in-node-js-with-the-http-module-es
+https://www.victorvr.com/tutorial/variables-de-entorno-con-nodejs
