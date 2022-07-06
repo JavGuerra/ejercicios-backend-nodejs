@@ -23,20 +23,15 @@ router.get('/info', (req, res) => {
 
 router.get('/error', (req, res, next) => {
     console.log('Página de error');
-    const err = new Error('¡Ups!');
-    next(err);
+    next(new Error('¡Ups!'));
 });
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Error 500: Algo salió mal.');
 });
-  
-app.use((err, req, res, next) => {
-    res.status(404).send('Error 404: No encontrado.');
-});
 
-app.use('/', (req, res) => {
+app.use((req, res) => {
     res.send('Página de cierre.');
 });
 
