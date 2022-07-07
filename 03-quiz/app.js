@@ -1,6 +1,5 @@
 const config = require('./config');
 const express = require('express');
-const { application } = require('express');
 const app = express();
 const router = express.Router();
 
@@ -28,18 +27,19 @@ router.get('/info', (req, res) => {
 
 router.get('/error', (req, res, next) => {
     console.log('Página de error');
-    next(new Error('¡Ups!'));
+    next(new Error('¡Ups! Algo salió mal.'));
 });
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
-    res.status(500).send('Error 500: Algo salió mal.');
+    const status = err.status || 500;
+    res.status(status).send(`Error ${status}: ${err.message}.`);
 });
 
-// TODO Se ejecuta siempre, incluso cuando introduciomos una URL que no existe.
 app.use((req, res) => {
     res.send('Página de cierre.');
 });
 
-app.listen(config.PORT);
-console.log(`Express iniciado en el puerto ${config.PORT}.`);
+app.listen(config.PORT, () => {
+    console.log(`Express iniciado en el puerto ${config.PORT}.`);
+})
