@@ -1,5 +1,6 @@
 const config = require('./config');
 const express = require('express');
+const { application } = require('express');
 const app = express();
 const router = express.Router();
 
@@ -9,6 +10,10 @@ app.use((req, res, next) => {
 });
 
 app.use('/quiz', express.static(__dirname + '/public'));
+
+app.get('/', (req, res) => {
+    res.redirect('/home');
+});
 
 app.use('/home', router);
 
@@ -31,6 +36,7 @@ app.use((err, req, res, next) => {
     res.status(500).send('Error 500: Algo salió mal.');
 });
 
+// TODO Se ejecuta siempre, incluso cuando introduciomos una URL que no existe.
 app.use((req, res) => {
     res.send('Página de cierre.');
 });
