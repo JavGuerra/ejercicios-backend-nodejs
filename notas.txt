@@ -1,2 +1,0 @@
-Generador: https://expressjs.com/es/starter/generator.html
-Errores: https://reflectoring.io/express-error-handling/
