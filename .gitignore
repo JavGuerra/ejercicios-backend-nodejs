@@ -1,8 +1,10 @@
-.env
+/entregas
 /estructura
-/notas
-entregas
+estructura.package.json
 install.sh
+notas.txt
+
+.env
 
 # Logs
 logs
