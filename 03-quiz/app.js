@@ -1,8 +1,6 @@
 const config = require('./config');
 const express = require('express');
-
-var indexRouter = require('./routes/index');
-
+const indexRouter = require('./routes/index');
 const app = express();
 
 app.use((req, res, next) => {
