@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const products = require('../products');
 
-// query params
+// query strings
 router.get('/', (req, res) => {
     const { brand, color, price } = req.query;
 
@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     res.json(result);
 });
 
-// url params
+// query params
 router.get('/:brand', (req, res) => {
     const brand = req.params.brand.toUpperCase();
 
