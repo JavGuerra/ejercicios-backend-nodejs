@@ -1,6 +1,6 @@
 const config = require('./config');
 const express = require('express');
-const indexRouter = require('./routes/index');
+const indexRouter = require('./routes/home');
 const app = express();
 
 app.use((req, res, next) => {
@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
     res.redirect('/home');
 });
 
-app.use('/home', indexRouter);
+app.use('/home', homeRouter);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
