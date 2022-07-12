@@ -1,6 +1,6 @@
 const config = require('./config');
-const express = require('express');
 const homeRouter = require('./routes/home');
+const express = require('express');
 const app = express();
 
 app.use((req, res, next) => {
