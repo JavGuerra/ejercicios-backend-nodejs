@@ -1,7 +1,9 @@
 const config = require('./config');
 const express = require('express');
+
+var indexRouter = require('./routes/index');
+
 const app = express();
-const router = express.Router();
 
 app.use((req, res, next) => {
     console.log('Ruta: ' + req.url);
@@ -14,21 +16,7 @@ app.get('/', (req, res) => {
     res.redirect('/home');
 });
 
-app.use('/home', router);
-
-router.get('/contacto', (req, res, next) => {
-    console.log('Estamos en la página de contacto');
-    next();
-});
-
-router.get('/info', (req, res) => {
-    res.send('Página de info');
-});
-
-router.get('/error', (req, res, next) => {
-    console.log('Página de error');
-    next(new Error('¡Ups! Algo salió mal.'));
-});
+app.use('/home', indexRouter);
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
