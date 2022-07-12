@@ -1,0 +1,16 @@
+Partiendo desde el estado actual de nuestra aplicación node definiremos un
+router nuevo en nuestro directorios /routes donde gestionaremos una api,
+dentro de este enrutado debemos importar nuestro objeto products y tendremos
+que definir enrutados que recojan datos para realizar busquedas:
+
+- Definiremos con URL PARAMS:
+Un enrutado que reciba marca y devuelva aquellos productos que correspondan.
+Un enrutado que reciba marca, color y devuelva aquellos productos que correspondan.
+Otro enrutado que reciba marca, color, precio y devuelva aquellos productos que
+estén por debajo del precio marcado.
+
+- Definiremos con QUERY PARAMS:
+Un enrutado que contemple si existe cada uno de los parámetros (MARCA, COLOR, PRECIO)
+y devuelva un resultado que se ajuste a los parámetros de búsqueda.
+
+Siempre deberemos realizar control de errores (que no existan resultados o el formato de los parámetros)
