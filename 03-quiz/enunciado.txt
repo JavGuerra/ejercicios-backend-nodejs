@@ -22,3 +22,5 @@ debe estar configurado para dos entornos:
     puerto: 3000        puerto: 8000
 
 Esto debe estar gestionado a través de variables de entorno (DOTENV)
+
+APUNTE: El proyecto a servir como estático (nuestro Quiz) debe estar en una carpeta /public/
