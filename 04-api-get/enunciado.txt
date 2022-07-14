@@ -14,3 +14,15 @@ Un enrutado que contemple si existe cada uno de los parámetros (MARCA, COLOR, P
 y devuelva un resultado que se ajuste a los parámetros de búsqueda.
 
 Siempre deberemos realizar control de errores (que no existan resultados o el formato de los parámetros)
+
+Desarrollaremos un frontal donde realizaremos las consultas a nuestra API para visualizar el contenido.
+
+Podemos usar los endpoint que consideremos precisos, no es necesario usar todos.
+Para esto, recogeremos los datos en un formulario y realizaremos la búsqueda en
+función de los datos aportados por el usuario.
+
+Debemos validar los datos para que tengan sentido en relación a la consulta a la API.
+
+Recogeremos los datos del formulario a través de un evento asignado a un botón que
+construirá la URL y lanzará un fetch.Procesaremos la respuesta y mostraremos los datos
+al usuario (a través de una tabla, por ejemplo)
