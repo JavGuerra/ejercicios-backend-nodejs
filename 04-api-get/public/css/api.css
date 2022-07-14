@@ -11,16 +11,21 @@ label,
 
 input {
     width: 165px;
-    padding: 0.3em;
-    margin: 0 0.5em;
+    padding: 0.5em 1em;
+    margin: 0.5em;
+    border: 1px solid gray !important;
+    border-radius: 5px;
 }
 
 button {
-    margin: 0 0.5em;
+    margin: 0.5em;
     padding: 0.5em;
-    width: 135px;
     font-variant: small-caps;
+    font-weight: bold;
+    font-size: 1em;
     cursor: pointer;
+    border: 1px solid WhiteSmoke;
+    border-radius: 10px;
 }
 
 button:disabled {
@@ -29,7 +34,27 @@ button:disabled {
 
 input,
 button:enabled {
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px !important;
+}
+
+#borrar {
+    background-color: #ffeaff;
+    color: Orchid;
+    width: 100px;
+}
+
+#borrar:hover {
+    background-color: #ffdaff;
+}
+
+#enviar {
+    background-color: #e6fae6;
+    color: SeaGreen;
+    width: 150px;
+}
+
+#enviar:hover {
+    background-color: #c6fac6;
 }
 
 .obligatorio {
@@ -48,6 +73,16 @@ table {
     max-width: 575px;
     border-collapse: collapse;
 }
+
+thead tr {
+    background-image: linear-gradient(45deg, #80008033, #00800033) !important; 
+}
+
+th {
+    color: white !important;
+    text-shadow: gray 1px 1px;
+}
+
 
 .sr {
     position: absolute;
@@ -89,4 +124,12 @@ table {
 
 .fondo {
     background-color: GhostWhite;
+    background-image: linear-gradient(260deg, #80008011, #00800011);
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 10px;
+}
+
+#estatus {
+    color: darkblue;
 }
