@@ -3,16 +3,20 @@ const form = document.formulario;
 const elZona = el('#zona');
 const borrar = el('#borrar');
 const enviar = el('#enviar');
+const estatus = el('#estatus');
+const resulta = el('#resulta');
+const listado = el('#listado');
+
 borrar.onclick = limpia;
 enviar.onclick = e => procesaForm(e);
 
 function el(el) { return document.querySelector(el); }
 
 function limpia() {
-  el('#estatus').textContent = '';
-  el('#listado').textContent = '';
-  el('#estatus').style.display = 'none';
-  el('#resulta').style.display = 'none';
+  estatus.textContent = '';
+  estatus.style.display = 'none';
+  listado.textContent = '';
+  resulta.style.display = 'none';
 }
 
 function procesaForm(e) {
@@ -45,11 +49,11 @@ function inactivaBtn(boton, estatus) {
 function union(params) { return (params.length) ? '&' : '?'; }
 
 function procesaConsulta(params) {
-  const url = 'http://localhost:3000/search'
+  const url = 'http://localhost:3000/search';
   const consulta = (data) => {
     ponEstatus(data.response_code);
     if (!data.response_code) ponRespuesta(data.result);
-    inactivaBtn(enviar, false);
+    else inactivaBtn(enviar, false);
   }
   consultaAPI(url + params, consulta);
 }
@@ -71,20 +75,19 @@ function consultaAPI(ruta, callback) {
 }
 
 function ponEstatus(codigo) {
-  el('#estatus').style.display = 'block';
-  el('#estatus').textContent += 'Estatus: ';
-  if (codigo) el('#estatus').textContent += 'Sin coincidencias.';
-  else el('#estatus').textContent += 'OK.';
+  estatus.style.display = 'block';
+  estatus.textContent = 'Estatus: ' + ((codigo) ? 'Sin coincidencias.' : 'OK.');
 }
 
 function ponRespuesta(resultados) {
-  el('#resulta').style.display = 'block';
+  resulta.style.display = 'block';
   for (const resultado of resultados) {
-    const tr = creaEl(el('#listado'), 'tr');
+    const tr = creaEl(listado, 'tr');
     for (const valor of Object.values(resultado)) {
       creaEl(tr, 'td', valor);
     }
   }
+  inactivaBtn(enviar, false);
 }
 
 function creaEl(padre, el, contenido = null) {

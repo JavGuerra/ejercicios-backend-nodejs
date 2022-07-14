@@ -2,6 +2,7 @@ body {
     margin: 2em auto;
     max-width: 50em;
     text-align: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0e0ff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 label,
@@ -10,7 +11,7 @@ label,
 }
 
 input {
-    width: 165px;
+    width: 132px;
     padding: 0.5em 1em;
     margin: 0.5em;
     border: 1px solid gray !important;
@@ -75,14 +76,9 @@ table {
 }
 
 thead tr {
-    background-image: linear-gradient(45deg, #80008033, #00800033) !important; 
+    background-color: white !important;
+    background-image: linear-gradient(45deg, #80008010, #00800010) !important;
 }
-
-th {
-    color: white !important;
-    text-shadow: gray 1px 1px;
-}
-
 
 .sr {
     position: absolute;
@@ -97,12 +93,11 @@ th {
 
 .spinner {
     margin: 0 auto;
-    border: 5px solid LightGray;
+    border: 5px solid lightblue;
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    border-left-color: DarkOrange;
-
+    border-left-color: blue;
     animation: spin 1s ease infinite;
 }
 
@@ -117,19 +112,23 @@ th {
 }
 
 .colores {
-	background-image: linear-gradient(260deg, rgb(255, 0, 255), rgb(0, 255, 0)) !important;
-	-webkit-background-clip: text !important;
-	-webkit-text-fill-color: transparent !important;
+    background-image: linear-gradient(260deg, rgb(255, 0, 255), rgb(0, 255, 0)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
 }
 
 .fondo {
-    background-color: GhostWhite;
-    background-image: linear-gradient(260deg, #80008011, #00800011);
+    box-sizing: border-box;
+    background-color: white;
+    background-image: linear-gradient(260deg, #80008010, #00800010);
     padding: 1em;
-    margin-bottom: 1em;
+    margin: 0 auto 1em;
+    width: 100%;
+    max-width: 575px;
     border-radius: 10px;
 }
 
 #estatus {
     color: darkblue;
+    font-size: x-large;
 }
