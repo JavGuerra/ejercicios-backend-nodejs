@@ -4,6 +4,11 @@ const searchRouter = require('./routes/search');
 const express = require('express');
 const app = express();
 
+if (config.NODE_ENV !== 'production') {
+    const cors = require('cors');
+    app.use(cors());
+}
+
 app.use((req, res, next) => {
     console.log('Ruta: ' + req.url);
     next();
