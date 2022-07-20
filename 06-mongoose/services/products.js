@@ -1,9 +1,8 @@
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const mongoClient = require('mongodb').MongoClient;
 
-const db_host = process.env.DB_HOST || 'mongodb://localhost';
-const db_port = process.env.DB_PORT || 49153;
-const url = `${db_host}:${db_port}/`;
-const db_name = process.env.DB_DATABASE || "products";
+const url = `${process.env.DB_HOST}:${process.env.DB_PORT}/`;
+const db_name = process.env.DB_DATABASE;
 const collection = "products";
 
 mongoClient.connect(url, function(err, database) {
