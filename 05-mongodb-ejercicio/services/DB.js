@@ -21,7 +21,7 @@ module.exports = {
     },
 
     closeDB: function () {
-        if (_db) _db.close();
+        if (_db) return _db.close();
         throw 'BBDD no encontrada.';
     }
 };
