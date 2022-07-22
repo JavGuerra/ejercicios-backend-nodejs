@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 
     db.collection('products').findOne({}, function(err, result) {
         if (err) throw err;
-        console.log('Listado completo: ', result);
+        console.log('Primero de la lista: ', result);
     });
 
     mySort = { "price": -1 };

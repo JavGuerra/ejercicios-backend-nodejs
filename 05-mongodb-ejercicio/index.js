@@ -13,7 +13,7 @@ app.use((req, res, next) => {
     next();
 });
 
-mongoDB.connectToServer( function( err, client ) {
+mongoDB.connectDB(function( err, client ) {
     if (err) console.log(err);
 
     // http:localhost:3000/createmanufacters
@@ -42,9 +42,9 @@ mongoDB.connectToServer( function( err, client ) {
 
     // http:localhost:3000/exit
     app.get('/exit', (req, res) => {
-        mongoDB.closeDB;
+        res.end('Fin');
+        mongoDB.disconnectDB();
         process.exit(1);
-        res.end();
     })
 
     app.use((req, res) => {
