@@ -4,10 +4,11 @@ const products = require('../products');
 
 const mongoDB = require('../services/DB');
 const db = mongoDB.getDB();
+const collection = db.collection('products');
 
 router.get('/', (req, res) => {
 
-    db.collection('products').drop(function(err, delOK) {
+    collection.drop(function(err, delOK) {
         if (err) throw err;
         if (delOK) console.log("Colección borrada.");
     });
@@ -17,7 +18,7 @@ router.get('/', (req, res) => {
         console.log('Colección añadida.');
     });
 
-    db.collection('products').insertMany(products, function(err, res){
+    collection.insertMany(products, function(err, res){
         if (err) throw err;
         console.log('Documentos añadidos.');
     });

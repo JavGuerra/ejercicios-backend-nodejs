@@ -3,19 +3,20 @@ const router = express.Router();
 
 const mongoDB = require('../services/DB');
 const db = mongoDB.getDB();
+const collection = db.collection('products');
 
 let myQuery;
 
 router.get('/', (req, res) => {
 
     myQuery = { "color": "blue" };
-    db.collection('products').deleteOne(myQuery, function(err, obj) {
+    collection.deleteOne(myQuery, function(err, obj) {
         if (err) throw err;
         console.log('Documento borrado.');
     });
 
     myQuery = { "color": "red" };
-    db.collection('products').deleteMany(myQuery, function(err, obj) {
+    collection.deleteMany(myQuery, function(err, obj) {
         if (err) throw err;
         console.log('Documentos borrados.');
     });

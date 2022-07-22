@@ -1,12 +1,13 @@
 {
-  "name": "05-mongodb-connect",
+  "name": "06-mongodb-ejercicio",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./index.js",
-    "dev": "NODE_ENV=development nodemon ./index.js"
+    "dev": "set NODE_ENV=development&& nodemon ./index.js",
+    "devLinux": "NODE_ENV=development nodemon ./index.js"
   },
   "author": "",
   "license": "ISC",

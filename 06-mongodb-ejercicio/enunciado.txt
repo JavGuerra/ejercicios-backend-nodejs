@@ -1,5 +1,4 @@
 ENUNCIADO MONGODB SIMPLE
-https://github.com/TheBridge-FullStackDeveloper/fullstack_INDRA_PT_mar22/blob/main/teoria/fundamentos-javascript/clase16.md
 
 Realizaremos una implantación que comtemplará los siguientes scripts:
 

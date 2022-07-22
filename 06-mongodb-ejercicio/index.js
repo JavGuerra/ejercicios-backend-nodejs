@@ -13,39 +13,39 @@ app.use((req, res, next) => {
     next();
 });
 
-mongoDB.connectDB(function( err, client ) {
-    if (err) console.log(err);
+mongoDB.connectDB((err, client) => {
+    if (err) throw err;
 
-    // http:localhost:3000/createmanufacters
+    //  http:localhost:3000/createmanufacters
     const DBRouterCreateManufacters = require('./routes/createManufacters');
     app.use('/createmanufacters', DBRouterCreateManufacters);
 
-    // http:localhost:3000/createproducts
+    //  http:localhost:3000/createproducts
     const DBRouterCreateProducts = require('./routes/createProducts');
     app.use('/createproducts', DBRouterCreateProducts);
 
-    // http:localhost:3000/deletemanufacters
+    //  http:localhost:3000/deletemanufacters
     const DBRouterDeleteManufacters = require('./routes/deleteManufacters');
     app.use('/deletemanufacters', DBRouterDeleteManufacters);
 
-    // http:localhost:3000/deleteproducts
+    //  http:localhost:3000/deleteproducts
     const DBRouterDeleteProducts = require('./routes/deleteProducts');
     app.use('/deleteproducts', DBRouterDeleteProducts);
 
-    // http:localhost:3000/findproducts
+    //  http:localhost:3000/findproducts
     const DBRouterFindProducts = require('./routes/findProducts');
     app.use('/findproducts', DBRouterFindProducts);
 
-    // http:localhost:3000/updateproducts
+    //  http:localhost:3000/updateproducts
     const DBRouterUpdateProducts = require('./routes/updateProducts');
     app.use('/updateproducts', DBRouterUpdateProducts);
 
-    // http:localhost:3000/exit
+    //  http:localhost:3000/exit
     app.get('/exit', (req, res) => {
+        client.close();
         res.end('Fin');
-        mongoDB.disconnectDB();
-        process.exit(1);
-    })
+        process.kill(process.pid, 'SIGTERM');
+    });
 
     app.use((req, res) => {
         res.status(404).send('Error 404: No encontrado.');
@@ -57,7 +57,11 @@ mongoDB.connectDB(function( err, client ) {
         res.status(status).send(`Error ${status}: ${err.message}.`);
     });
 
-    app.listen(port, () => {
+    const server = app.listen(port, () => {
         console.log(`Servidor levantado en el puerto ${port}.`);
+    });
+
+    process.on('SIGTERM', () => {
+        server.close(() => console.log('Proceso terminado.'))
     });
 });

@@ -3,6 +3,7 @@ const router = express.Router();
 
 const mongoDB = require('../services/DB');
 const db = mongoDB.getDB();
+const collection = db.collection('products');
 
 let myQuery, newValues;
 
@@ -13,7 +14,7 @@ router.get('/', (req, res) => {
         "price": 70000,
         "color": "red"
     }};
-    db.collection('products').updateOne(myQuery, newValues, function(err, res) {
+    collection.updateOne(myQuery, newValues, function(err, res) {
         if (err) throw err;
         console.log('Documento actualizado.');
     });
@@ -22,7 +23,7 @@ router.get('/', (req, res) => {
     newValues = { $set: {
         'price': 33000
     }};
-    db.collection('products').updateMany(myQuery, newValues, function(err, res) {
+    collection.updateMany(myQuery, newValues, function(err, res) {
         if (err) throw err;
         console.log('Documentos actualizados.');
     });

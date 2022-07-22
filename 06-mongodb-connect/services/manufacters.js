@@ -1,3 +1,5 @@
+// Más info en https://github.com/TheBridge-FullStackDeveloper/fullstack_INDRA_PT_mar22/blob/main/teoria/fundamentos-javascript/clase16.md
+
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 const mongoClient = require('mongodb').MongoClient;
 

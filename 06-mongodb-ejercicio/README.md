@@ -5,14 +5,14 @@ Por Javier Guerra
 
 ## Instrucciones de uso
 
-Tras instalar, renombrar el fichero .env.example a .env y completar las
-variables globales.
+Tras instalar, se debe renombrar el fichero .env.example a .env y completar con
+las variables globales.
 
-Incluir en la ruta en ./services/DB.js el usuario y contraseña si es necesario.
+En ./services/DB.js, incluir el usuario y contraseña en la ruta si es necesario.
 
-Para lanzar el script en desarrollo en Windows usar: npm run dev
+Para lanzar el script de desarrollo en Windows usar: npm run dev
 
-Para lanzar el script en desarrollo en Linux usar: npm run devLinux
+Para lanzar el script de desarrollo en Linux usar: npm run devLinux
 
 # Características
 
