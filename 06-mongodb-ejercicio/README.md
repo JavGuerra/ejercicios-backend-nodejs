@@ -14,7 +14,7 @@ Para lanzar el script de desarrollo en Windows usar: npm run dev
 
 Para lanzar el script de desarrollo en Linux usar: npm run devLinux
 
-# Características
+## Características
 
 El fichero index.js abre la conexión a la BBDD y esta permanece abierta durante
 toda la sesión. Cada ruta hace uso de la misma conexión abierta a la BBDD.
@@ -25,3 +25,7 @@ Los ficheros en ./routes son ejecutados mediante su respectiva URL.
 Los resultados se muestran por consola.
 
 La aplicación y la conexión a la BBDD se cierra con la ruta '/exit'.
+
+## Por hacer
+
+No se realizan comprobaciones al crear o borrar BBDD, colecciones o documentos.
