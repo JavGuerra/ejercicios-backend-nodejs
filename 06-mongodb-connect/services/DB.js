@@ -12,7 +12,6 @@ const loadDB = async () => {
     } catch (err) {
         console.log(err);
     }
-    return db;
 };
 
 module.exports = loadDB;
