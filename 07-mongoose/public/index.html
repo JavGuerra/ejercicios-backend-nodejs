@@ -18,7 +18,7 @@
         </header>
         <main>
             <section>
-                <form name="formulario" action="#" method="get">
+                <!-- <form name="formulario" action="#" method="get">
                     <div class="fondo">
                         <label for="modelo" class="sr">Modelo:</label>
                         <input type="text" id="modelo" name="modelo" placeholder="modelo" autofocus="autofocus" />
@@ -30,6 +30,13 @@
                     <button id="borrar" type="reset">Borrar</button>
                     <button id="enviar" type="send">Enviar</button>
                 </form>
+            </section> -->
+
+            <section id="desplegable">
+                <label for="marca" class="sr">Marca:</label>
+                <select class="select" id="marca" name="marca" required="required">
+                    <option value="" hidden="hidden" selected="selected">--Marcas--</option>
+                </select>
             </section>
 
             <section id="estatus"></section>
@@ -38,6 +45,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Modelo</th>
                             <th>Fabricante</th>
                             <th>Precio</th>

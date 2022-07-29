@@ -1,25 +1,40 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const searchRouter = require('./routes/search');
+const inicioRouter = require('./routes/inicio');
+const productRouter = require('./routes/product');
+const manufacterRouter = require('./routes/manufacter');
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
     const cors = require('cors');
     app.use(cors());
 }
-const url = `${process.env.DB_HOST}:${process.env.DB_PORT}/`;
+const url = `${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}?retryWrites=true&w=majority`;
 const port = process.env.PORT;
 
 app.use(express.static(__dirname + '/public'));
 
-app.use('/search', searchRouter);
+app.use('/inicio', inicioRouter);
+app.use('/product', productRouter);
+app.use('/manufacter', manufacterRouter);
 
 app.use(function(req, res) {
     res.status(404).send('Error 404: No encontrado.');
 });
 
-mongoose.connect(url);
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    const status = err.status || 500;
+    res.status(status).send(`Error ${status}: ${err.message}.`);
+});
 
-app.listen(port, () => {
-    console.log(`Servidor levantado en el puerto ${port}.`);
-})
+async function bootstrap() {
+    await mongoose.connect(url);
+    console.log('Conexión establecida a la BBDD.');
+    
+    app.listen(port, () => {
+        console.log(`Servidor levantado en el puerto ${port}.`);
+    })
+}
+
+bootstrap();

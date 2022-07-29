@@ -6,57 +6,52 @@ const enviar = el('#enviar');
 const estatus = el('#estatus');
 const resulta = el('#resulta');
 const listado = el('#listado');
+const marca = el('#marca');
 
-borrar.onclick = limpia;
-enviar.onclick = e => procesaForm(e);
+// borrar.onclick = limpia;
+// enviar.onclick = e => procesaForm(e);
+
+procesaProducts();
+procesaManufacters();
+
 
 function el(el) { return document.querySelector(el); }
 
-function limpia() {
-  estatus.textContent = '';
-  estatus.style.display = 'none';
-  listado.textContent = '';
-  resulta.style.display = 'none';
-}
+// function limpia() {
+//   estatus.textContent = '';
+//   estatus.style.display = 'none';
+//   listado.textContent = '';
+//   resulta.style.display = 'none';
+// }
 
-function procesaForm(e) {
-  inactivaBtn(enviar, true);
-  limpia();
-  if (form.checkValidity()) {
-    e.preventDefault();
-    if (form.modelo || form.color || form.precio) {
-      let params = '';
-      if (form.modelo.value.trim()) {
-        params += union(params) + 'brand=' + form.modelo.value.trim().toUpperCase();
-      }
-      if (form.color.value.trim()) {
-        params += union(params) + 'color=' + form.color.value.trim().toLowerCase();
-      }
-      if (form.precio.value) {
-        params += union(params) + 'price=' + form.precio.value;
-      }
-      if (params.length) procesaConsulta(params);
-    }
-  }
-  inactivaBtn(enviar, false);
-}
+// function procesaForm(e) {
+//   inactivaBtn(enviar, true);
+//   limpia();
+//   if (form.checkValidity()) {
+//     e.preventDefault();
+//     if (form.modelo || form.color || form.precio) {
+//       let params = '';
+//       if (form.modelo.value.trim()) {
+//         params += union(params) + 'brand=' + form.modelo.value.trim().toUpperCase();
+//       }
+//       if (form.color.value.trim()) {
+//         params += union(params) + 'color=' + form.color.value.trim().toLowerCase();
+//       }
+//       if (form.precio.value) {
+//         params += union(params) + 'price=' + form.precio.value;
+//       }
+//       if (params.length) procesaConsulta(params);
+//     }
+//   }
+//   inactivaBtn(enviar, false);
+// }
 
-function inactivaBtn(boton, estatus) {
-  boton.disabled = estatus;
-  boton.setAttribute('aria-disabled', estatus);
-}
+// function inactivaBtn(boton, estatus) {
+//   boton.disabled = estatus;
+//   boton.setAttribute('aria-disabled', estatus);
+// }
 
-function union(params) { return (params.length) ? '&' : '?'; }
-
-function procesaConsulta(params) {
-  const url = 'http://localhost:3000/search';
-  const consulta = (data) => {
-    ponEstatus(data.response_code);
-    if (!data.response_code) ponRespuesta(data.result);
-    else inactivaBtn(enviar, false);
-  }
-  consultaAPI(url + params, consulta);
-}
+// function union(params) { return (params.length) ? '&' : '?'; }
 
 function consultaAPI(ruta, callback) {
   ponSpin(true);
@@ -69,9 +64,19 @@ function consultaAPI(ruta, callback) {
     .catch(err => {
       console.error(err);
       alert(err);
-      inactivaBtn(enviar, false);
+      // inactivaBtn(enviar, false);
     })
     .finally(ponSpin(false));
+}
+
+function procesaProducts() {
+  const url = 'http://localhost:3000/inicio/products';
+  const consulta = (data) => {
+    ponEstatus(data.response_code);
+    if (!data.response_code) ponProducts(data.result);
+    // else inactivaBtn(enviar, false);
+  }
+  consultaAPI(url, consulta);
 }
 
 function ponEstatus(codigo) {
@@ -79,7 +84,7 @@ function ponEstatus(codigo) {
   estatus.textContent = 'Estatus: ' + ((codigo) ? 'Sin coincidencias.' : 'OK.');
 }
 
-function ponRespuesta(resultados) {
+function ponProducts(resultados) {
   resulta.style.display = 'block';
   for (const resultado of resultados) {
     const tr = creaEl(listado, 'tr');
@@ -87,13 +92,32 @@ function ponRespuesta(resultados) {
       creaEl(tr, 'td', valor);
     }
   }
-  inactivaBtn(enviar, false);
+  // inactivaBtn(enviar, false);
 }
 
 function creaEl(padre, el, contenido = null) {
   let nuevoEl = document.createElement(el);
   if (contenido) nuevoEl.innerHTML = contenido;
   return padre.appendChild(nuevoEl);
+}
+
+function procesaManufacters() {
+  const url = 'http://localhost:3000/inicio/manufacters';
+  const consulta = (data) => {
+    ponEstatus(data.response_code);
+    if (!data.response_code) ponManufacters(data.result);
+    // else inactivaBtn(enviar, false);
+  }
+  consultaAPI(url, consulta);
+}
+
+function ponManufacters(resultados) {
+  resulta.style.display = 'block';
+  for (const resultado of resultados) {
+    const tr = creaEl(listado, 'tr');
+    creaEl(marca, 'option', resultado.name);
+  }
+  // inactivaBtn(enviar, false);
 }
 
 function ponSpin(estatus) {
