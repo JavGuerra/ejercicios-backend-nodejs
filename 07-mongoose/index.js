@@ -1,3 +1,4 @@
+const compression = require('compression');
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -12,6 +13,7 @@ if (process.env.NODE_ENV !== 'production') {
 const url = `${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATABASE}?retryWrites=true&w=majority`;
 const port = process.env.PORT;
 
+app.use(compression());
 app.use(express.static(__dirname + '/public'));
 
 app.use('/inicio', inicioRouter);
