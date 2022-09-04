@@ -1,18 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const productModel = require('../schemas/Product-schema');
+const manufacterModel = require('../schemas/Manufacter-schema');
 
-router.get('/', async (req, res, next) => {
+router.get('/products', async (req, res, next) => {
     try {
-        const docs = await productModel.find({}).exec();
-        console.log('Productos: ', docs);
-        res.json({"response_code": 0, docs});
+        const result = await productModel.find({}).exec();
+        res.json({response_code: 0, result});
     } catch (err) { 
         next(err)
     }
 })
 
-
+router.get('/manufacters', async (req, res, next) => {
+    try {
+        const result = await manufacterModel.find({}).exec();
+        res.json({response_code: 0, result});
+    } catch (err) { 
+        next(err)
+    }
+})
 
 // response_code:
 // 0: OK: Hay datos que devolver

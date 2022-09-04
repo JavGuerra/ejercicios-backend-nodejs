@@ -1,0 +1,3 @@
+Debemos replicar el funcionamiento de nuestra aplicación "concesionario" sustituyendo la base de datos MongoDB por Postgresql.Deberemos adaptar nuestro servidor de Node a la nueva base de datos (editar servicios, editar conexión, editar script para crear tabla, borrar esquemas de mongo y cualquier funcionalidad perteneciente a esto)Os proporcionamos el script para crear nuestras tablas *IMPORTANTE: debemos crear primero nuestra base de datos llamada concesionario a través de pgAdmin)
+
+Por lo tanto: Siempre que queramos resetear nuestra BBDD deberemos borrar las tablas pero nunca la BBDD, si no, no funcionará.

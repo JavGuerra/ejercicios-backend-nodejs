@@ -6,7 +6,7 @@ router.get('/', async (req, res, next) => {
     try {
         const docs = await productModel.find({}).exec();
         console.log('Productos: ', docs);
-        res.json(docs);
+        res.json({"response_code": 0, docs});
     } catch (err) { 
         next(err)
     }

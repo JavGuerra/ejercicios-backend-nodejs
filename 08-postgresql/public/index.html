@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API</title>
+    <link rel="stylesheet" href="css/wysiwyg-min.css">
+    <link rel="stylesheet" href="css/api.css">
+    <script defer src="js/formulario.js"></script>
+</head>
+
+<body>
+    <div class="wysiwyg">
+        <header>
+            <h1 class="colores">Consulta API - Mongoose</h1>
+        </header>
+        <main>
+            <!-- <section>
+                <form name="formulario" action="#" method="get">
+                    <div class="fondo">
+                        <label for="modelo" class="sr">Modelo:</label>
+                        <input type="text" id="modelo" name="modelo" placeholder="modelo" autofocus="autofocus" />
+                        <label for="color" class="sr">Color:</label>
+                        <input type="text" id="color" name="color" placeholder="color" />
+                        <label for="precio" class="sr">Precio:</label>
+                        <input type="number" id="precio" name="precio" placeholder="precio" min="0" />
+                    </div>
+                    <button id="borrar" type="reset">Borrar</button>
+                    <button id="enviar" type="send">Enviar</button>
+                </form>
+            </section> -->
+
+            <section id="desplegable">
+                <label for="marca" class="sr">Marca:</label>
+                <select class="select" id="marca" name="marca" required="required">
+                    <option value="" hidden="hidden" selected="selected">--Marcas--</option>
+                </select>
+            </section>
+
+            <section id="estatus"></section>
+
+            <section id="resulta">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Modelo</th>
+                            <th>Fabricante</th>
+                            <th>Precio</th>
+                            <th>Color</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listado"></tbody>
+                </table>
+            </section>
+        </main>
+
+        <dialog id="zona">
+            <div class="spinner" aria-label="Consultando..."></div>
+        </dialog>
+    </div>
+</body>
+
+</html>
