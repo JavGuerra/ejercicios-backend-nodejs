@@ -14,7 +14,7 @@ const url = `${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATA
 const port = process.env.PORT;
 
 app.use(compression());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + './public'));
 
 app.use('/inicio', inicioRouter);
 app.use('/product', productRouter);

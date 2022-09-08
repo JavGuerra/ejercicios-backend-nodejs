@@ -70,7 +70,7 @@ function consultaAPI(ruta, callback) {
 }
 
 function procesaProducts() {
-  const url = 'http://localhost:3000/inicio/products';
+  const url = 'http://localhost:3000/products';
   const consulta = (data) => {
     ponEstatus(data.response_code);
     if (!data.response_code) ponProducts(data.result);
@@ -102,7 +102,7 @@ function creaEl(padre, el, contenido = null) {
 }
 
 function procesaManufacters() {
-  const url = 'http://localhost:3000/inicio/manufacters';
+  const url = 'http://localhost:3000/manufacters';
   const consulta = (data) => {
     ponEstatus(data.response_code);
     if (!data.response_code) ponManufacters(data.result);
