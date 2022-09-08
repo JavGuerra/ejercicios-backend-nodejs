@@ -17,12 +17,12 @@ procesaManufacters();
 
 function el(el) { return document.querySelector(el); }
 
-// function limpia() {
-//   estatus.textContent = '';
-//   estatus.style.display = 'none';
-//   listado.textContent = '';
-//   resulta.style.display = 'none';
-// }
+function limpia() {
+  estatus.textContent = '';
+  estatus.style.display = 'none';
+  listado.textContent = '';
+  resulta.style.display = 'none';
+}
 
 // function procesaForm(e) {
 //   inactivaBtn(enviar, true);
@@ -95,9 +95,10 @@ function ponProducts(resultados) {
   // inactivaBtn(enviar, false);
 }
 
-function creaEl(padre, el, contenido = null) {
+function creaEl(padre, el, contenido = null, atributo = null, valor = '') {
   let nuevoEl = document.createElement(el);
   if (contenido) nuevoEl.innerHTML = contenido;
+  if (atributo ) nuevoEl.setAttribute(atributo, valor);
   return padre.appendChild(nuevoEl);
 }
 
@@ -115,7 +116,7 @@ function ponManufacters(resultados) {
   resulta.style.display = 'block';
   for (const resultado of resultados) {
     const tr = creaEl(listado, 'tr');
-    creaEl(marca, 'option', resultado.name);
+    creaEl(marca, 'option', resultado.name, 'value', resultado.cif);
   }
   // inactivaBtn(enviar, false);
 }

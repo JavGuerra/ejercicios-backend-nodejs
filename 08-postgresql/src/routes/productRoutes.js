@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const productController = require('../controllers/productController');
+const productControllers = require('../controllers/productControllers');
 
-router.get('/', productController.getAllProducts);
+router.get('/', productControllers.getAllProducts);
+router.get('/:marca', productControllers.getProductsByManufacters);
 
 module.exports = router;

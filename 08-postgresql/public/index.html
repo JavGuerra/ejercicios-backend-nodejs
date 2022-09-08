@@ -17,26 +17,23 @@
             <h1 class="colores">Consulta API - Postgress</h1>
         </header>
         <main>
-            <!-- <section>
+            <section>
                 <form name="formulario" action="#" method="get">
                     <div class="fondo">
                         <label for="modelo" class="sr">Modelo:</label>
                         <input type="text" id="modelo" name="modelo" placeholder="modelo" autofocus="autofocus" />
-                        <label for="color" class="sr">Color:</label>
+                        <!-- <label for="color" class="sr">Color:</label>
                         <input type="text" id="color" name="color" placeholder="color" />
                         <label for="precio" class="sr">Precio:</label>
-                        <input type="number" id="precio" name="precio" placeholder="precio" min="0" />
+                        <input type="number" id="precio" name="precio" placeholder="precio" min="0" /> -->
+                        <label for="marca" class="sr">Marca:</label>
+                        <select class="select" id="marca" name="marca" required="required">
+                            <option value="" hidden="hidden" selected="selected">--Marcas--</option>
+                        </select>
                     </div>
                     <button id="borrar" type="reset">Borrar</button>
                     <button id="enviar" type="send">Enviar</button>
                 </form>
-            </section> -->
-
-            <section id="desplegable">
-                <label for="marca" class="sr">Marca:</label>
-                <select class="select" id="marca" name="marca" required="required">
-                    <option value="" hidden="hidden" selected="selected">--Marcas--</option>
-                </select>
             </section>
 
             <section id="estatus"></section>

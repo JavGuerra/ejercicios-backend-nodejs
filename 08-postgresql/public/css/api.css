@@ -10,12 +10,18 @@ label,
     display: inline-block;
 }
 
-input {
+input,
+select {
     width: 132px;
     padding: 0.5em 1em;
     margin: 0.5em;
     border: 1px solid gray !important;
     border-radius: 5px;
+}
+
+select {
+    width: 160px;
+    background-color: white;
 }
 
 button {
@@ -34,6 +40,7 @@ button:disabled {
 }
 
 input,
+select,
 button:enabled {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px !important;
 }
