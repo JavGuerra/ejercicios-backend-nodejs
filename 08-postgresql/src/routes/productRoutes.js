@@ -4,6 +4,6 @@ const {getAllProducts, getProductsByManufacters }
     = require('../controllers/productControllers');
 
 router.get('/', getAllProducts);
-router.get('/:marca', getProductsByManufacters);
+router.get('/:marca', getProductsByManufacters); // testing
 
 module.exports = router;
