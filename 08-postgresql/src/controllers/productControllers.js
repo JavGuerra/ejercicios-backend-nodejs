@@ -3,16 +3,13 @@ const productServices = require('../services/productServices');
 
 const getAllProducts = async (req, res) => {
     const allProducts = await productServices.getAllProducts();
-    res.send(response(allProducts));
+    res.json(response(allProducts));
 };
 
 const getProductsByManufacters = async (req, res) => {
     const productsByManufacters = 
         await productServices.getProductsByManufacters(req.params.marca);
-    res.send(response(productsByManufacters));
+    res.json(response(productsByManufacters));
 };
 
-module.exports = {
-    getAllProducts,
-    getProductsByManufacters
-};
+module.exports = { getAllProducts, getProductsByManufacters };

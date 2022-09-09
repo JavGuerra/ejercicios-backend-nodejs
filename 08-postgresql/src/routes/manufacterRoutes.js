@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const manufacterControllers = require('../controllers/manufacterControllers');
+const { getAllManufacters, getManufacter }
+    = require('../controllers/manufacterControllers');
 
-router.get('/', manufacterControllers.getAllManufacters);
-router.get('/:marca', manufacterControllers.getManufacter);
+router.get('/', getAllManufacters);
+router.get('/:marca', getManufacter);
 
 module.exports = router;

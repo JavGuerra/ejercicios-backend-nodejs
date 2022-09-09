@@ -1,4 +1,4 @@
-function response(result) {
+var response = (result) => {
     let response_code = (result.length) ? 0 : 1;
     return {response_code, result};
 }
@@ -8,7 +8,4 @@ var rute = (req, res, next) => {
     next();
 };
 
-module.exports = {
-    response,
-    rute
-};
+module.exports = { response, rute };

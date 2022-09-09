@@ -1,5 +1,5 @@
 body {
-    margin: 2em auto;
+    margin: 2em auto 4em;
     max-width: 50em;
     text-align: center;
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0e0ff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
@@ -69,14 +69,19 @@ button:enabled {
     color: #ff2450;
 }
 
-#resulta,
 #estatus {
-    margin-top: 2em;
+    color: darkblue;
+    font-size: x-large;
+}
+
+#estatus,
+#resulta {
+    margin-top: 1em;
     display: none;
 }
 
 table {
-    margin: 1em auto;
+    margin: 1.5em auto;
     width: 100%;
     max-width: 575px;
     border-collapse: collapse;
@@ -133,9 +138,4 @@ thead tr {
     width: 100%;
     max-width: 575px;
     border-radius: 10px;
-}
-
-#estatus {
-    color: darkblue;
-    font-size: x-large;
 }

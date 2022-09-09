@@ -1,138 +1,80 @@
-let spins = haySpins = 0;
-const form = document.formulario;
-const elZona = el('#zona');
-const borrar = el('#borrar');
-const enviar = el('#enviar');
-const estatus = el('#estatus');
-const resulta = el('#resulta');
-const listado = el('#listado');
-const marca = el('#marca');
+const url     = `http://localhost:3000/`;
+const form    = document.formulario;
+const borrar  = $('#borrar' );
+const enviar  = $('#enviar' );
+const estatus = $('#estatus');
+const resulta = $('#resulta');
+const listado = $('#listado');
+const marca   = $('#marca'  );
 
-// borrar.onclick = limpia;
-// enviar.onclick = e => procesaForm(e);
+borrar.onclick = limpia;
+enviar.onclick = e => procesaForm(e);
 
-procesaProducts();
-procesaManufacters();
-
-
-function el(el) { return document.querySelector(el); }
+procesaConsulta('manufacters', (data) => ponManufacters(data));
+procesaConsulta('products'   , (data) => ponProducts(data));
 
 function limpia() {
   estatus.textContent = '';
-  estatus.style.display = 'none';
   listado.textContent = '';
-  resulta.style.display = 'none';
+  muestraEl(estatus, false);
+  muestraEl(resulta, false);
+  procesaConsulta('products', (data) => ponProducts(data));
 }
 
-// function procesaForm(e) {
-//   inactivaBtn(enviar, true);
-//   limpia();
-//   if (form.checkValidity()) {
-//     e.preventDefault();
-//     if (form.modelo || form.color || form.precio) {
-//       let params = '';
-//       if (form.modelo.value.trim()) {
-//         params += union(params) + 'brand=' + form.modelo.value.trim().toUpperCase();
-//       }
-//       if (form.color.value.trim()) {
-//         params += union(params) + 'color=' + form.color.value.trim().toLowerCase();
-//       }
-//       if (form.precio.value) {
-//         params += union(params) + 'price=' + form.precio.value;
-//       }
-//       if (params.length) procesaConsulta(params);
-//     }
-//   }
-//   inactivaBtn(enviar, false);
-// }
+function procesaForm(e) {
+  inactivaBtn(enviar, true);
+  limpia();
+  if (form.checkValidity()) {
+    e.preventDefault();
+    if (form.modelo || form.color || form.precio || form.marca) {
+      let params = '';
+      if (form.modelo.value.trim()) {
+        params += une(params)
+          + 'modelo=' + form.modelo.value.trim().toUpperCase();
+      }
+      if (form.color.value.trim()) {
+        params += une(params)
+          + 'color=' + form.color.value.trim().toLowerCase();
+      }
+      if (form.precio.value) {
+        params += une(params) + 'precio=' + form.precio.value;
+      }
+      if (form.marca.value) {
+        params += une(params) + 'marca=' + form.marca.value;
+      }
 
-// function inactivaBtn(boton, estatus) {
-//   boton.disabled = estatus;
-//   boton.setAttribute('aria-disabled', estatus);
-// }
-
-// function union(params) { return (params.length) ? '&' : '?'; }
-
-function consultaAPI(ruta, callback) {
-  ponSpin(true);
-  fetch(ruta)
-    .then(respuesta => {
-      if (!respuesta.ok) throw Error(respuesta.statusText);
-      return respuesta.json();
-    })
-    .then(data => callback(data))
-    .catch(err => {
-      console.error(err);
-      alert(err);
-      // inactivaBtn(enviar, false);
-    })
-    .finally(ponSpin(false));
+      if (params.length) 
+        procesaConsulta('search' + params, (data) => ponProducts(data));
+    }
+  }
+  inactivaBtn(enviar, false);
 }
 
-function procesaProducts() {
-  const url = 'http://localhost:3000/products';
+function procesaConsulta(ruta, callback) {
   const consulta = (data) => {
     ponEstatus(data.response_code);
-    if (!data.response_code) ponProducts(data.result);
-    // else inactivaBtn(enviar, false);
+    if (!data.response_code) callback(data.result);
+    else inactivaBtn(enviar, false);
   }
-  consultaAPI(url, consulta);
-}
-
-function ponEstatus(codigo) {
-  estatus.style.display = 'block';
-  estatus.textContent = 'Estatus: ' + ((codigo) ? 'Sin coincidencias.' : 'OK.');
+  console.log(url + ruta);
+  consultaAPI(url + ruta, consulta); 
 }
 
 function ponProducts(resultados) {
-  resulta.style.display = 'block';
+  muestraEl(resulta, true);
   for (const resultado of resultados) {
     const tr = creaEl(listado, 'tr');
     for (const valor of Object.values(resultado)) {
       creaEl(tr, 'td', valor);
     }
   }
-  // inactivaBtn(enviar, false);
-}
-
-function creaEl(padre, el, contenido = null, atributo = null, valor = '') {
-  let nuevoEl = document.createElement(el);
-  if (contenido) nuevoEl.innerHTML = contenido;
-  if (atributo ) nuevoEl.setAttribute(atributo, valor);
-  return padre.appendChild(nuevoEl);
-}
-
-function procesaManufacters() {
-  const url = 'http://localhost:3000/manufacters';
-  const consulta = (data) => {
-    ponEstatus(data.response_code);
-    if (!data.response_code) ponManufacters(data.result);
-    // else inactivaBtn(enviar, false);
-  }
-  consultaAPI(url, consulta);
+  inactivaBtn(enviar, false);
 }
 
 function ponManufacters(resultados) {
-  resulta.style.display = 'block';
   for (const resultado of resultados) {
     const tr = creaEl(listado, 'tr');
     creaEl(marca, 'option', resultado.name, 'value', resultado.cif);
   }
-  // inactivaBtn(enviar, false);
-}
-
-function ponSpin(estatus) {
-  estatus ? spins++ : spins--;
-  if (estatus && !haySpins) {
-    haySpins = setInterval(compruebaSpin, 300);
-    elZona.showModal();
-  }
-}
-
-function compruebaSpin() {
-  if (!spins) {
-    clearInterval(haySpins);
-    areSpins = 0;
-    elZona.close();
-  }
+  inactivaBtn(enviar, false);
 }

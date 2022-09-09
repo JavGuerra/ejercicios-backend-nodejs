@@ -20,7 +20,4 @@ const getManufacter = async (marca) => {
     }
 }
 
-module.exports = {
-    getAllManufacters,
-    getManufacter
-};
+module.exports = { getAllManufacters, getManufacter };
