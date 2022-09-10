@@ -97,12 +97,12 @@ function procesaForm(e) {
         params += une(params) + 'precio=' + form.precio.value;
       }
       if (form.marca.value) {
-        // TODO params += une(params) + 'marca=' + form.marca.value;
-        params += form.marca.value;
+        params += une(params) + 'marca=' + form.marca.value;
+        
       }
 
       if (params.length) {
-        procesaConsulta('products/' + params, (data) => ponProducts(data));
+        procesaConsulta('search' + params, (data) => ponProducts(data));
       } else {
         procesaConsulta('products', (data) => ponProducts(data));
       }
@@ -132,7 +132,9 @@ function procesaConsulta(ruta, callback) {
  */
 function ponEstatus(codigo) {
   estatus.style.display = 'block';
-  estatus.textContent = 'Estatus: ' + ((codigo) ? 'Sin coincidencias.' : 'OK.');
+  estatus.textContent = 'Estatus: ' +
+    ((!codigo) ? 'OK.'
+    : (codigo == 1) ? 'Sin coincidencias.' : 'Sin parámetros.');
 }
 
 

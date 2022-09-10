@@ -6,9 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/index.js",
-    "dev": "NODE_ENV=development nodemon ./src/index.js"
+    "dev": "NODE_ENV=development nodemon ./src/index.js",
+    "devWin": "set NODE_ENV=development&& nodemon /src/index.js"
   },
-  "author": "",
+  "author": "Javier Guerra",
   "license": "ISC",
   "dependencies": {
     "compression": "^1.7.4",

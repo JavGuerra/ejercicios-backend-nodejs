@@ -1,8 +1,9 @@
 const client = require('../modules/connection');
 
-const getProducts = async (marca) => {
+const getProducts = async (params) => {
     try {
-        const request = `SELECT * FROM products WHERE manufacter_cif='${marca}'`;
+        const request = 'SELECT * FROM products' + params + ';';
+        console.log(request);
         const list = await client.query(request);
         return list.rows;
     } catch (err) {
@@ -10,4 +11,4 @@ const getProducts = async (marca) => {
     }
 }
 
-module.exports = getProducts;
+module.exports = { getProducts };

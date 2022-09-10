@@ -159,8 +159,8 @@ thead tr {
     content: attr(data-title);
     background-color: Cornsilk;
     position: absolute;
-    padding: 1px 5px 2px 5px;
-    bottom: -3em;
+    padding: 6px 10px 6px 10px;
+    bottom: -3.5em;
     left: -5px;
     width: 250px;
     box-shadow: 1px 1px 3px #222222;
