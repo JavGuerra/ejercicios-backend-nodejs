@@ -14,21 +14,17 @@ form.color.onchange  = estadoEnviar;
 form.precio.onchange = estadoEnviar;
 form.marca.onchange  = estadoEnviar;
 
-inactivaBtn(enviar, true);
-inactivaBtn(borrar, true);
-procesaConsulta('manufacters', (data) => ponManufacters(data));
-procesaConsulta('products'   , (data) => ponProducts(data));
+resetea();
 
 /**
  * Si el formulario está vacío, limpia la página y lista todos los productos.
  */
 function resetea() {
-  if (estadoFormulario()) {
-    inactivaBtn(enviar, true);
-    inactivaBtn(borrar, true);
-    limpia();
-    procesaConsulta('products', (data) => ponProducts(data));
-  }
+  inactivaBtn(enviar, true);
+  inactivaBtn(borrar, true);
+  limpia();
+  procesaConsulta('manufacters', (data) => ponManufacters(data));
+  procesaConsulta('products'   , (data) => ponProducts(data));
 }
 
 /**
@@ -42,7 +38,7 @@ function limpia() {
 }
 
 /**
- * Actuiva o desactiva los botones si el formulario tiene contenido o no.
+ * Activa o desactiva los botones si el formulario tiene contenido o no.
  */
 function estadoEnviar() {
   inactivaBtn(enviar, !estadoFormulario());
@@ -141,18 +137,21 @@ function ponManufacters(resultados) {
 function ponProducts(resultados) {
   muestraEl(resulta, true);
   for (const resultado of resultados) {
-    // Consulta la API mediante la ruta y una función callback
-    // para obtener los datos del fabricante por cada fila de la tabla.
+
+    // Consulta la API mediante la ruta y una función callback para
+    // obtener los datos del fabricante por cada fila de la tabla.
     consultaAPI(
       url + 'manufacters/' + resultado.manufacter_cif,
       (data) => {
         let fabricante = resultado.manufacter_cif;
         let dfn = resultado.manufacter_cif;
+
         // Obtiene datos para mostrar en la columna 'Fabricante' de cada fila.
         if (!data.response_code) {
           fabricante = data.result[0].name;
           dfn = fabricante + ' • CIF: ' + dfn + ' • ' + data.result[0].address;
         }
+
         // Crea la fila y llena las columnas con los datos de cada producto.
         const tr = creaEl(listado, 'tr');
         for (const valor of Object.values(resultado)) {
@@ -164,7 +163,9 @@ function ponProducts(resultados) {
             creaEl(tr, 'td', valor);
           }
         }
-      }
-    );
-  }
+        
+      } // end callback
+    ); // end consultaAPI
+
+  } // end for resultado
 }

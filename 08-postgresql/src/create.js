@@ -24,8 +24,7 @@ const createBBDD = async () => {
 
         values = values.substring(0, values.length - 1);
 
-        const queryCreateManufacters = `INSERT INTO public.manufacters
-        (cif, name, addres) VALUES ${values};`
+        const queryCreateManufacters = `INSERT INTO public.manufacters (cif, name, addres) VALUES ${values};`
 
         console.log('QUERY PARA INSERTAR FABRICANTES', queryCreateManufacters)
 
@@ -38,9 +37,7 @@ const createBBDD = async () => {
 
         values = values.substring(0, values.length - 1);
 
-        const queryCreateProducts = `INSERT INTO public.products(
-            id, name, manufacter_cif, price, color)
-            VALUES ${values};`
+        const queryCreateProducts = `INSERT INTO public.products(id, name, manufacter_cif, price, color) VALUES ${values};`
         
         console.log('QUERY PARA INSERTAR PRODUCTOS', queryCreateManufacters)
 
@@ -48,7 +45,7 @@ const createBBDD = async () => {
         
         console.log('TABLAS CREADAS CON ÉXITO');
     } catch(e) {
-        console.log('ERROR',e)
+        console.log('ERROR', e)
     }
     // await client.end();
 }
