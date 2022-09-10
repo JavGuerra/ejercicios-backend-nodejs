@@ -1,5 +1,5 @@
 // Crea las tablas e introduce el contenido de products y manufactures en ellas.
-// La BBDD concesionario debe estar creada.
+// La BBDD 'concesionario' debe estar creada previamente.
 
 const products = require('./modules/products');
 const manufacters = require('./modules/manufacters');
@@ -8,7 +8,7 @@ const client = require('./modules/connection');
 
 const createBBDD = async () => {
 
-    const queryCreateProductsTable = 'CREATE TABLE concesionario.public.manufacters( cif text NOT NULL, name text NOT NULL, addres text NOT NULL, PRIMARY KEY (cif) );'
+    const queryCreateProductsTable = 'CREATE TABLE concesionario.public.manufacters( cif text NOT NULL, name text NOT NULL, address text NOT NULL, PRIMARY KEY (cif) );'
 
     const queryCreateManufactersTable = 'CREATE TABLE concesionario.public.products( id bigint NOT NULL, name text, manufacter_cif text, price bigint, color text, PRIMARY KEY (id), FOREIGN KEY (manufacter_cif) REFERENCES concesionario.public.manufacters (cif) );'
     

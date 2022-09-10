@@ -37,6 +37,8 @@ button {
 
 button:disabled {
     cursor: not-allowed;
+    background-color: WhiteSmoke !important;
+    color: Silver !important;
 }
 
 input,
@@ -51,7 +53,7 @@ button:enabled {
     width: 100px;
 }
 
-#borrar:hover {
+#borrar:enabled:hover {
     background-color: #ffdaff;
 }
 
@@ -61,7 +63,7 @@ button:enabled {
     width: 150px;
 }
 
-#enviar:hover {
+#enviar:enabled:hover {
     background-color: #c6fac6;
 }
 
