@@ -7,6 +7,7 @@ const resulta = $('#resulta');
 const listado = $('#listado');
 const marca   = $('#marca'  );
 
+// Eventos
 borrar.onclick = resetea;
 enviar.onclick = e => procesaForm(e);
 form.modelo.onchange = estadoEnviar;
@@ -14,18 +15,32 @@ form.color.onchange  = estadoEnviar;
 form.precio.onchange = estadoEnviar;
 form.marca.onchange  = estadoEnviar;
 
-resetea();
+inicio();
+
+
+/**
+ * Preparación del estado inicial de la página.
+ */
+function inicio() {
+  inactivaBtn(enviar, true);
+  inactivaBtn(borrar, true);
+  procesaConsulta('manufacters', (data) => ponManufacters(data));
+  procesaConsulta('products'   , (data) => ponProducts(data));
+}
+
 
 /**
  * Si el formulario está vacío, limpia la página y lista todos los productos.
  */
 function resetea() {
-  inactivaBtn(enviar, true);
-  inactivaBtn(borrar, true);
-  limpia();
-  procesaConsulta('manufacters', (data) => ponManufacters(data));
-  procesaConsulta('products'   , (data) => ponProducts(data));
+  if (estadoFormulario()) {
+    inactivaBtn(enviar, true);
+    inactivaBtn(borrar, true);
+    limpia();
+    procesaConsulta('products', (data) => ponProducts(data));
+  }
 }
+
 
 /**
  * Limpia la zona de estatus y el listado de productos y oculta ambas zonas.
@@ -37,6 +52,7 @@ function limpia() {
   muestraEl(resulta, false);
 }
 
+
 /**
  * Activa o desactiva los botones si el formulario tiene contenido o no.
  */
@@ -44,6 +60,7 @@ function estadoEnviar() {
   inactivaBtn(enviar, !estadoFormulario());
   inactivaBtn(borrar, !estadoFormulario());
 }
+
 
 /**
  * Comprueba si el formulario tiene contenido.
@@ -55,6 +72,7 @@ function estadoFormulario() {
     form.precio.value || form.marca.value
   ) ? true : false;
 }
+
 
 /**
  * Prepara y lanza la consulta a BBDD en función del contenido del formulario.
@@ -93,6 +111,7 @@ function procesaForm(e) {
   inactivaBtn(enviar, false);
 }
 
+
 /**
  * Hace la consulta a la ruta indicada, lanza la función callback y pone Status.
  * @param {String} ruta 
@@ -106,6 +125,7 @@ function procesaConsulta(ruta, callback) {
   consultaAPI(url + ruta, consulta); 
 }
 
+
 /**
  * Muestra el código de estado indicado tras la consulta.
  * @param {String} codigo 
@@ -114,6 +134,7 @@ function ponEstatus(codigo) {
   estatus.style.display = 'block';
   estatus.textContent = 'Estatus: ' + ((codigo) ? 'Sin coincidencias.' : 'OK.');
 }
+
 
 /**
  * Crea los 'option' del select con los nombres de los fabricantes obtenidos.
@@ -130,42 +151,43 @@ function ponManufacters(resultados) {
   }
 }
 
+
 /**
  * Lista los productos en la tabla e incluye info de cada 
  * @param {Array} resultados 
  */
-function ponProducts(resultados) {
+ function ponProducts(resultados) {
+
   muestraEl(resulta, true);
+
   for (const resultado of resultados) {
 
     // Consulta la API mediante la ruta y una función callback para
     // obtener los datos del fabricante por cada fila de la tabla.
-    consultaAPI(
-      url + 'manufacters/' + resultado.manufacter_cif,
-      (data) => {
-        let fabricante = resultado.manufacter_cif;
-        let dfn = resultado.manufacter_cif;
+    consultaAPI(url + 'manufacters/' + resultado.manufacter_cif, (data) => {
 
-        // Obtiene datos para mostrar en la columna 'Fabricante' de cada fila.
-        if (!data.response_code) {
-          fabricante = data.result[0].name;
-          dfn = fabricante + ' • CIF: ' + dfn + ' • ' + data.result[0].address;
-        }
+      let fabricante = resultado.manufacter_cif;
+      let dfn = resultado.manufacter_cif;
 
-        // Crea la fila y llena las columnas con los datos de cada producto.
-        const tr = creaEl(listado, 'tr');
-        for (const valor of Object.values(resultado)) {
-          if (resultado.manufacter_cif == valor) {
-              const td = creaEl(tr, 'td');
-              const el = creaEl(td, 'dfn', fabricante, 'data-title', dfn);
-              el.classList.add("dfn");
-          } else {
-            creaEl(tr, 'td', valor);
-          }
+      // Obtiene datos para mostrar en la columna 'Fabricante' de cada fila.
+      if (!data.response_code) {
+        fabricante = data.result[0].name;
+        dfn = fabricante + ' • CIF: ' + dfn + ' • ' + data.result[0].address;
+      }
+
+      // Crea la fila y llena las columnas con los datos de cada producto.
+      const tr = creaEl(listado, 'tr');
+      for (const valor of Object.values(resultado)) {
+        if (resultado.manufacter_cif == valor) {
+            const td = creaEl(tr, 'td');
+            const el = creaEl(td, 'dfn', fabricante, 'data-title', dfn);
+            el.classList.add("dfn");
+        } else {
+          creaEl(tr, 'td', valor);
         }
-        
-      } // end callback
-    ); // end consultaAPI
+      }
+
+    }); // end callback y consultaAPI
 
   } // end for resultado
 }
