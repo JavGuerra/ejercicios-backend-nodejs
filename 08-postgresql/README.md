@@ -3,8 +3,8 @@
 # Instrucciones de uso
 
 * Tras descargar, renombrar el fichero `.env.example` a `.env` y rellenar.
-* Para lanzar el script en desarrollo en Windows usar: `npm run devWin`.
-* Se han hecho cambios en el fichero `connection.js` que requiere reusarlo.
+* Para lanzar el script de desarrollo en Windows, usar: `npm run devWin`.
+* Se han hecho cambios en el fichero `connection.js` que requiere ejecutarlo.
   Concretamente se ha cambiado `addres` por `address` en la constante
   `queryCreateProductsTable`, y se han comentado las lineas de `client.end()`
   y `client.connect()`. Ver «A tener en cuenta» más abajo.
@@ -12,9 +12,9 @@
 ## Características
 
 * Al pasar sobre el nombre del fabricante, en cada línea del listado, se muestra
-un recuadro flotante con la información de ese fabricante.
+  un recuadro flotante con la información de ese fabricante.
 * Los botones se activan o desactivan en función de si los campos del formulario
-tienen contenido o no.
+  tienen contenido o no.
 * El diseño del cliente es adaptable (_responsive_).
 * La consola de node.js muestra las rutas consultadas y las consultas SQL.
 

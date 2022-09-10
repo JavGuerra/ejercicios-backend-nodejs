@@ -119,15 +119,15 @@ function procesaForm(e) {
 
 /**
  * Hace la consulta a la ruta indicada, lanza la función callback y pone Status.
- * @param {String} ruta 
+ * @param {String} params 
  * @param {Function} callback 
  */
-function procesaConsulta(ruta, callback) {
+function procesaConsulta(params, callback) {
   const consulta = (data) => {
     ponEstatus(data.response_code);
     if (!data.response_code) callback(data.result);
   }
-  consultaAPI(url + ruta, consulta); 
+  consultaAPI(url + params, consulta); 
 }
 
 
@@ -163,7 +163,7 @@ function ponManufacters(resultados) {
  * Lista los productos en la tabla e incluye info de cada 
  * @param {Array} resultados 
  */
- function ponProducts(resultados) {
+function ponProducts(resultados) {
 
   muestraEl(resulta, true);
 
