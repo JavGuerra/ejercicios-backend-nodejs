@@ -20,11 +20,6 @@ function inactivaBtn(boton, estatus) {
   boton.setAttribute('aria-disabled', estatus);
 }
 
-function ponEstatus(codigo) {
-  estatus.style.display = 'block';
-  estatus.textContent = 'Estatus: ' + ((codigo) ? 'Sin coincidencias.' : 'OK.');
-}
-
 function une(params) { return (params.length) ? '&' : '?'; }
 
 function consultaAPI(ruta, callback) {
