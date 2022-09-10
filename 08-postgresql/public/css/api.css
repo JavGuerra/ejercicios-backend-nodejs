@@ -150,11 +150,13 @@ thead tr {
 }
 
 /* https://stackoverflow.com/questions/2011142/how-to-change-the-style-of-the-title-attribute-inside-an-anchor-tag */
+
 [data-title]:hover:after {
     opacity: 1;
     transition: all 0.1s ease 0.5s;
     visibility: visible;
 }
+
 [data-title]:after {
     content: attr(data-title);
     background-color: Cornsilk;
@@ -168,6 +170,7 @@ thead tr {
     z-index: 99999;
     visibility: hidden;
 }
+
 [data-title] {
     position: relative;
 }

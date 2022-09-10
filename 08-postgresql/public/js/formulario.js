@@ -57,8 +57,13 @@ function limpia() {
  * Activa o desactiva los botones si el formulario tiene contenido o no.
  */
 function estadoEnviar() {
-  inactivaBtn(enviar, !estadoFormulario());
-  inactivaBtn(borrar, !estadoFormulario());
+  let estatus = estadoFormulario();
+  inactivaBtn(enviar, !estatus);
+  inactivaBtn(borrar, !estatus);
+  if (!estatus) {
+    limpia();
+    procesaConsulta('products', (data) => ponProducts(data));
+  }
 }
 
 
