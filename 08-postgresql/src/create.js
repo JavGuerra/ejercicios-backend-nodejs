@@ -1,5 +1,5 @@
 // Crea las tablas e introduce el contenido de products y manufactures en ellas.
-// La BBDD 'concesionario' debe estar creada previamente.
+// La BBDD 'concesionario' debe estar creada previamente, sino dará error.
 
 const products = require('./modules/products');
 const manufacters = require('./modules/manufacters');
