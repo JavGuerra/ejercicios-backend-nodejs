@@ -1,7 +1,7 @@
 const client = require('../modules/connection');
 
 /**
- * formatea la respuesta con el código de respuesta y el resultado.
+ * Formatea la respuesta con el código de respuesta y el resultado.
  * @param {Number} response_code 
  * @param {JSON} result 
  * @returns 
