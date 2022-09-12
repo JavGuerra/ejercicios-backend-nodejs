@@ -1,10 +1,12 @@
+const client = require('../modules/connection');
+
 /**
  * formatea la respuesta con el código de respuesta y el resultado.
  * @param {Number} response_code 
  * @param {JSON} result 
  * @returns 
  */
-var response = (response_code, result) => {
+const response = (response_code, result) => {
     // response_code:
     // 0: OK: Hay datos que devolver
     // 1: Sin resultados encontrados
@@ -14,11 +16,25 @@ var response = (response_code, result) => {
 }
 
 /**
+ * Obtiene listado de la BBDD a partir de una consulta SQL
+ * @param {String} request 
+ * @returns Array
+ */
+const getDbList = async (request) => {
+    try {
+        const list = await client.query(request);
+        return list.rows;
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+/**
  * Devuelve un un valor u otro si params está vacío o no.
  * @param {String} params 
  * @returns 
  */
-function r(params) { return (params) ? ' AND ' : ' WHERE '; }
+const r = (params) => { return (params) ? ' AND ' : ' WHERE '; }
 
 /**
  * formatea la salida del middleware que muestra la ruta solicitada.
@@ -26,9 +42,9 @@ function r(params) { return (params) ? ' AND ' : ' WHERE '; }
  * @param {*} res 
  * @param {*} next 
  */
-var rute = (req, res, next) => {
+const rute = (req, res, next) => {
     console.log('Ruta: ' + req.url);
     next();
 };
 
-module.exports = { response, r, rute };
+module.exports = { response, getDbList, r, rute };

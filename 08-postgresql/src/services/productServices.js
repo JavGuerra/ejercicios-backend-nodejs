@@ -1,23 +1,13 @@
-const client = require('../modules/connection');
+const { getDbList } = require('../modules/utils');
 
 const getAllProducts = async () => {
-    try {
-        const request = 'SELECT * FROM products'
-        const list = await client.query(request);
-        return list.rows;
-    } catch (err) {
-        console.error(err);
-    }
+    const request = 'SELECT * FROM products';
+    return getDbList(request);
 }
 
 const getProductsByManufacters = async (marca) => {
-    try {
-        const request = `SELECT * FROM products WHERE manufacter_cif='${marca}'`;
-        const list = await client.query(request);
-        return list.rows;
-    } catch (err) {
-        console.error(err);
-    }
+    const request = `SELECT * FROM products WHERE manufacter_cif='${marca}'`;
+    return getDbList(request);
 }
 
 module.exports = { getAllProducts, getProductsByManufacters };
