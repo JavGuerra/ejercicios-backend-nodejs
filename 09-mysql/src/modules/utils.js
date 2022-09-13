@@ -1,4 +1,4 @@
-const client = require('./connection');
+const { config, makeDb } = require('./connection');
 
 /**
  * Formatea la respuesta con el código de respuesta y el resultado.
@@ -21,25 +21,19 @@ const response = (response_code, result) => {
  * @returns Array
  */
 const getMysqlDbList = async (request) => {
+
+    let list = '';
+    const db = makeDb(config);
+
     try {
-
-        // const list = await client.query(request, function (error, results, fields) {
-        //     if (error)
-        //         throw error;
-        
-        //     results.forEach(result => {
-        //         console.log(result);
-        //         return list;
-        //     });
-        // });
-        
-        const list = await client.query(request); // TODO
-        console.log("Lista: ", list);
-
-        return list;
-    } catch (err) {
+        list = await db.query(request);
+    } catch ( err ) {
         console.error(err);
+    } finally {
+        await db.close();
     }
+
+    return list;
 }
 
 /**

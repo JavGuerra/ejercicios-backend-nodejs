@@ -1,20 +1,25 @@
+const util = require('util');
 const mysql = require('mysql');
 if (process.env.NODE_ENV !== 'production') require('dotenv').config();
 
-const conexion = mysql.createConnection({
-    host : process.env.DB_HOST,
-    database : process.env.DB_DATABASE,
-    user : process.env.DB_USERNAME,
-    password : process.env.DB_PASSWORD,
-    port : process.env.DB_PORT
-});
+const config = {
+    host: process.env.DB_HOST,
+    database: process.env.DB_DATABASE,
+    user: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT
+};
 
-conexion.connect(function(err) {
-    if (err) {
-        console.error('Error de conexion: ' + err.stack);
-        return;
-    }
-    console.log('Conectado con el identificador ' + conexion.threadId);
-});
-
-module.exports = conexion;
+function makeDb(config) {
+    const connection = mysql.createConnection(config);
+    return {
+        query(sql, args) {
+            return util.promisify(connection.query)
+                .call(connection, sql, args);
+        },
+        close() {
+            return util.promisify(connection.end).call(connection);
+        }
+    };
+}
+module.exports = {config, makeDb};
