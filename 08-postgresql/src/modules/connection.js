@@ -12,8 +12,8 @@ const connectionData = {
 }
 
 const pool = new Pool(connectionData);
-// const client = new Client(connectionData);
-// client.connect();
+//const client = new Client(connectionData);
+//client.connect();
 
 console.log('Conexión establecida a la BBDD.');
 
