@@ -22,9 +22,19 @@ const response = (response_code, result) => {
  */
 const getMysqlDbList = async (request) => {
     try {
-        const list = await client.query(request);
 
-        console.log("Lista: ", list);  // TODO
+        // const list = await client.query(request, function (error, results, fields) {
+        //     if (error)
+        //         throw error;
+        
+        //     results.forEach(result => {
+        //         console.log(result);
+        //         return list;
+        //     });
+        // });
+        
+        const list = await client.query(request); // TODO
+        console.log("Lista: ", list);
 
         return list;
     } catch (err) {
@@ -50,4 +60,4 @@ const rute = (req, res, next) => {
     next();
 };
 
-module.exports = { response, getDbList, r, rute };
+module.exports = { response, getMysqlDbList, r, rute };
