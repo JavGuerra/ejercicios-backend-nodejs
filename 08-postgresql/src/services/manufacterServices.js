@@ -1,11 +1,11 @@
 const { getDbList } = require('../modules/utils');
 
-const getAllManufacters = async () => {
+const getAllManufacters = () => {
     const request = 'SELECT * FROM manufacters';
     return getDbList(request);
 }
 
-const getManufacter = async (marca) => {
+const getManufacter = (marca) => {
     const request = `SELECT * FROM manufacters WHERE cif='${marca}'`;
     return getDbList(request);
 }

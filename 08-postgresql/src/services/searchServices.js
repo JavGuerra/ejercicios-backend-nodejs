@@ -1,6 +1,6 @@
 const { getDbList } = require('../modules/utils');
 
-const getProducts = async (params) => {
+const getProducts = (params) => {
     const request = 'SELECT * FROM products' + params + ';';
     console.log(request);
     return getDbList(request);
