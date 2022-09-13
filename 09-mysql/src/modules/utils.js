@@ -23,7 +23,10 @@ const response = (response_code, result) => {
 const getDbList = async (request) => {
     try {
         const list = await client.query(request);
-        return list.rows;
+
+        console.log("Lista: ", list);  // TODO
+
+        return list;
     } catch (err) {
         console.error(err);
     }
