@@ -16,11 +16,11 @@ const response = (response_code, result) => {
 }
 
 /**
- * Obtiene listado de la BBDD a partir de una consulta SQL
+ * Obtiene listado de la BBDD MySQL a partir de una consulta SQL
  * @param {String} request 
  * @returns Array
  */
-const getDbList = async (request) => {
+const getMysqlDbList = async (request) => {
     try {
         const list = await client.query(request);
 

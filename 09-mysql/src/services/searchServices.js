@@ -1,4 +1,4 @@
-const { getDbList, r } = require('../modules/utils');
+const { getMysqlDbList, r } = require('../modules/utils');
 
 const getProducts = (modelo, color, precio, marca) => {
     let params = '';
@@ -8,7 +8,7 @@ const getProducts = (modelo, color, precio, marca) => {
     params += marca  ? r(params) + `manufacter_cif='${marca}'` : '';
     const request = 'SELECT * FROM products' + params + ';';
     console.log(request);
-    return getDbList(request);
+    return getMysqlDbList(request);
 }
 
 module.exports = { getProducts };
