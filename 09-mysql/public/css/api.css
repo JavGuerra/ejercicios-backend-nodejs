@@ -1,0 +1,176 @@
+body {
+    margin: 2em auto 4em;
+    max-width: 50em;
+    text-align: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23e0e0ff' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+label,
+.etiqueta {
+    display: inline-block;
+}
+
+input,
+select {
+    width: 132px;
+    padding: 0.5em 1em;
+    margin: 0.5em;
+    border: 1px solid gray !important;
+    border-radius: 5px;
+}
+
+select {
+    width: 160px;
+    background-color: white;
+}
+
+button {
+    margin: 0.5em;
+    padding: 0.5em;
+    font-variant: small-caps;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+    border: 1px solid WhiteSmoke;
+    border-radius: 10px;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    background-color: WhiteSmoke !important;
+    color: Silver !important;
+}
+
+input,
+select,
+button:enabled {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px !important;
+}
+
+#borrar {
+    background-color: #ffeaff;
+    color: Orchid;
+    width: 100px;
+}
+
+#borrar:enabled:hover {
+    background-color: #ffdaff;
+}
+
+#enviar {
+    background-color: #e6fae6;
+    color: SeaGreen;
+    width: 150px;
+}
+
+#enviar:enabled:hover {
+    background-color: #c6fac6;
+}
+
+.obligatorio {
+    color: #ff2450;
+}
+
+#estatus {
+    color: darkblue;
+    font-size: x-large;
+}
+
+#estatus,
+#resulta {
+    margin-top: 1em;
+    display: none;
+}
+
+table {
+    margin: 1.5em auto;
+    width: 100%;
+    max-width: 575px;
+    border-collapse: collapse;
+}
+
+thead tr {
+    background-color: white !important;
+    background-image: linear-gradient(45deg, #80008010, #00800010) !important;
+}
+
+.sr {
+    position: absolute;
+    overflow: hidden;
+    text-indent: -9999px;
+}
+
+#zona {
+    border: none;
+    background: none;
+}
+
+.spinner {
+    margin: 0 auto;
+    border: 5px solid lightblue;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border-left-color: blue;
+    animation: spin 1s ease infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.colores {
+    background-image: linear-gradient(260deg, rgb(255, 0, 255), rgb(0, 255, 0)) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+}
+
+.fondo {
+    box-sizing: border-box;
+    background-color: white;
+    background-image: linear-gradient(260deg, #80008010, #00800010);
+    padding: 1em;
+    margin: 0 auto 1em;
+    width: 100%;
+    max-width: 575px;
+    border-radius: 10px;
+}
+
+.dfn {
+    border-bottom: 2px dotted DarkSlateBlue !important;
+    text-decoration: none;
+    font-style: inherit;
+    cursor: help;
+}
+
+/* https://stackoverflow.com/questions/2011142/how-to-change-the-style-of-the-title-attribute-inside-an-anchor-tag */
+
+[data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+}
+
+[data-title]:after {
+    content: attr(data-title);
+    background-color: Cornsilk;
+    position: absolute;
+    padding: 6px 10px 6px 10px;
+    bottom: -3.5em;
+    left: -5px;
+    width: 250px;
+    box-shadow: 1px 1px 3px #222222;
+    opacity: 0;
+    z-index: 99999;
+    visibility: hidden;
+}
+
+[data-title] {
+    position: relative;
+}

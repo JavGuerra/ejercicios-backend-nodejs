@@ -1,4 +1,4 @@
-# Ejercicio PostgreSQL
+# Ejercicio MySQL
 
 # Instrucciones de uso
 
@@ -33,10 +33,10 @@ de estos campos. Mostrar información del fabricante en cada producto.
 ## Cambios sobre el ejercicio anterior
 
 Debemos replicar el funcionamiento de nuestra aplicación `concesionario`
-sustituyendo la base de datos MongoDB por PostgreSQL.
+sustituyendo la base de datos PostgreSQL por MySQL.
 
 Deberemos adaptar nuestro servidor de Node a la nueva base de datos (editar
-servicios, editar conexión, editar script para crear tabla, borrar esquemas de
-mongo y cualquier funcionalidad perteneciente a esto).
+servicios, editar conexión, editar script para crear tabla y cualquier
+funcionalidad perteneciente a esto).
 
 Os proporcionamos el script create.js para crear las tablas.
