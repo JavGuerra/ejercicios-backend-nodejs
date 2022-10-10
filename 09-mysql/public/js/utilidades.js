@@ -100,7 +100,7 @@ function ponSpin(estatus) {
 function compruebaSpin() {
   if (!spins) {
     clearInterval(haySpins);
-    areSpins = 0;
+    haySpins = 0;
     elZona.close();
   }
 }
