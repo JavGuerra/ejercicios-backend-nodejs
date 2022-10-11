@@ -20,7 +20,7 @@ app.use(rute);
 
 app.use('/search', searchRoutes);
 app.use('/products', productRouters);
-app.use('/manufacters', manufacterRouters);
+app.use('/manufacturers', manufacterRouters);
 
 app.use(function(req, res) {
     res.status(404).send('Error 404: No encontrado.');
