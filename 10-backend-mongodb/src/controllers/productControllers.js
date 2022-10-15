@@ -1,4 +1,4 @@
-const { response } = require('../modules/utils');
+const { clean, response } = require('../modules/utils');
 const productServices = require('../services/productServices');
 
 const getAllProducts = async (req, res) => {
@@ -7,7 +7,7 @@ const getAllProducts = async (req, res) => {
 };
 
 const getProductsByManufacters = async (req, res) => {
-    const marca = req.params.marca;
+    const marca = clean(req.params.marca.toUpperCase());
     const code = (marca) ? 0 : 2;
     let productsByManufacters = '';
     if (!code) productsByManufacters = 

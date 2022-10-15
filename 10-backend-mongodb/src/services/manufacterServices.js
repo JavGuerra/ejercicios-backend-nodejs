@@ -1,13 +1,11 @@
-const { getMysqlDbList } = require('../modules/utils');
+const manufacterModel = require('../schemas/Manufacter-schema');
 
-const getAllManufacters = () => {
-    const request = 'SELECT * FROM manufacters';
-    return getMysqlDbList(request);
+const getAllManufacters = async () => {
+    return await manufacterModel.find({}).exec();
 }
 
-const getManufacter = (marca) => {
-    const request = `SELECT * FROM manufacters WHERE cif='${marca}'`;
-    return getMysqlDbList(request);
+const getManufacter = async (marca) => {
+    return await manufacterModel.find({"cif": marca}).exec();
 }
 
 module.exports = { getAllManufacters, getManufacter };

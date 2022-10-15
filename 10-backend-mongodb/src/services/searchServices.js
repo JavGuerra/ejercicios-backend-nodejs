@@ -1,14 +1,13 @@
-const { getMysqlDbList, r } = require('../modules/utils');
+const productModel = require('../schemas/Product-schema');
 
-const getProducts = (modelo, color, precio, marca) => {
-    let params = '';
-    params += modelo ? r(params) + `name LIKE '%${modelo.toUpperCase()}%'` : '';
-    params += color  ? r(params) + `color LIKE '%${color.toLowerCase()}%'` : '';
-    params += precio ? r(params) + `price < ${precio}` : '';
-    params += marca  ? r(params) + `manufacter_cif='${marca}'` : '';
-    const request = 'SELECT * FROM products' + params + ';';
-    console.log(request);
-    return getMysqlDbList(request);
+const getProducts = async (modelo, color, precio, marca) => {
+    let query = {};
+    if (modelo) query.name = { $regex: `.*${modelo}.*` };
+    if (marca ) query.manufacter = { $regex: `.*${marca}.*` };
+    if (precio) query.price = precio;
+    if (color ) query.color = { $regex: `.*${color}.*` };
+    
+    return await productModel.find(query).exec();
 }
 
 module.exports = { getProducts };
