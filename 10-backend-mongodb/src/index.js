@@ -27,9 +27,7 @@ app.use('/search', searchRoutes);
 app.use('/products', productRouters);
 app.use('/manufacturers', manufacturerRouters);
 
-app.use((req, res) => {
-    res.status(404).send('Error 404: No encontrado.');
-});
+app.use((req, res) => res.status(404).send('Error 404: No encontrado.') );
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
@@ -39,7 +37,7 @@ app.use((err, req, res, next) => {
 
 async function bootstrap() {
     await mongoose.connect(url);
-    console.log('Conexión establecida a la BBDD.');
+    console.log('Conexión establecida con la BBDD.');
     
     app.listen(port, () => {
         console.log(`Servidor levantado en el puerto ${port}.`);
