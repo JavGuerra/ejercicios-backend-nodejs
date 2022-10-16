@@ -4,8 +4,8 @@ const getAllProducts = async () => {
     return await productModel.find({}).exec();
 }
 
-const getProductsByManufacters = async (marca) => {
+const getProductsByManufacturers = async (marca) => {
     return await productModel.find({"manufacter": marca}).exec();
 }
 
-module.exports = { getAllProducts, getProductsByManufacters };
+module.exports = { getAllProducts, getProductsByManufacturers };

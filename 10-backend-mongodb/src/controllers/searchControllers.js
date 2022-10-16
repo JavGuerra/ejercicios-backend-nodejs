@@ -1,21 +1,21 @@
-const { clean, response } = require('../modules/utils');
 const searchServices = require('../services/searchServices');
 
 const getProducts = async (req, res) => {
   let { modelo, color, precio, marca } = req.query;
-  if (modelo) modelo = clean(modelo.toUpperCase());
-  if (color ) color  = clean(color.toLowerCase());
-  if (precio) precio = clean(precio);
-  if (marca ) marca  = clean(marca.toUpperCase());
+  if (modelo) modelo = modelo.trim().toUpperCase();
+  if (color ) color  = color.trim().toLowerCase();
+  if (precio) precio = precio.trim();
+  if (marca ) marca  = marca.trim().toUpperCase();
 
-  const code = (modelo || color || precio || marca) ? 0 : 2;
-  let products = '';
+  let response_code = (modelo || color || precio || marca) ? 0 : 2;
+  let result = '';
 
-  if (!code) {
-    products = await searchServices.getProducts(modelo, color, precio, marca);
+  if (!response_code) {
+    result = await searchServices.getProducts(modelo, color, precio, marca);
+    response_code = (result.length) ? 0 : 1;
   }
-  
-  res.json(response(code, products));
+
+  res.json({response_code, result});
 };
 
 module.exports = getProducts;

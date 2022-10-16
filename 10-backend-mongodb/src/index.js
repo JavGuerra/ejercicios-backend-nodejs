@@ -3,10 +3,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-const { rute } = require('./modules/utils'); 
 const searchRoutes = require('./routes/searchRoutes');
 const productRouters = require('./routes/productRoutes');
-const manufacterRouters = require('./routes/manufacterRoutes');
+const manufacturerRouters = require('./routes/manufacturerRoutes');
 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config();
@@ -18,11 +17,15 @@ const url = `${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_DATA
 const port = process.env.PORT;
 
 app.use(compression());
-app.use(rute);
+
+app.use((req, res, next) => {
+    console.log('Ruta: ' + req.url);
+    next();
+});
 
 app.use('/search', searchRoutes);
 app.use('/products', productRouters);
-app.use('/manufacturers', manufacterRouters);
+app.use('/manufacturers', manufacturerRouters);
 
 app.use(function(req, res) {
     res.status(404).send('Error 404: No encontrado.');

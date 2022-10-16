@@ -1,3 +1,3 @@
 # Back end MongoDB
 
-En desarrollo...
+Consulta la BBDD 'Concesionario' en MongoDB usando Mongoose.

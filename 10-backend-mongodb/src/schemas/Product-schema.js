@@ -8,6 +8,6 @@ const productSchema = new Schema({
     color: String
 });
 
-const productModel = model('Product', productSchema);
+const productModel = model('products', productSchema);
 
 module.exports = productModel;
