@@ -27,7 +27,7 @@ app.use('/search', searchRoutes);
 app.use('/products', productRouters);
 app.use('/manufacturers', manufacturerRouters);
 
-app.use(function(req, res) {
+app.use((req, res) => {
     res.status(404).send('Error 404: No encontrado.');
 });
 
