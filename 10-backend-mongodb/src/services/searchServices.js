@@ -1,6 +1,6 @@
 const productModel = require('../schemas/Product-schema');
 
-const getProducts = async (modelo, color, precio, marca) => {
+const getFilteredProducts = async (modelo, color, precio, marca) => {
     let query = {};
     if (modelo) query.name = { $regex: `.*${modelo}.*` };
     if (marca ) query.manufacter = { $regex: `.*${marca}.*` };
@@ -10,4 +10,4 @@ const getProducts = async (modelo, color, precio, marca) => {
     return await productModel.find(query).exec();
 }
 
-module.exports = { getProducts };
+module.exports = { getFilteredProducts };
