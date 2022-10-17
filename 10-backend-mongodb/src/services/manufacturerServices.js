@@ -1,11 +1,11 @@
-const manufacturerModel = require('../schemas/Manufacturer-schema');
+const Manufacturer = require('../schemas/Manufacturer-schema');
 
 const getAllManufacturers = async () => {
-    return await manufacturerModel.find({}).exec();
+    return await Manufacturer.find({}).exec();
 }
 
 const getManufacturer = async (marca) => {
-    return await manufacturerModel.find({"cif": marca}).exec();
+    return await Manufacturer.find({"cif": marca}).exec();
 }
 
 module.exports = { getAllManufacturers, getManufacturer };

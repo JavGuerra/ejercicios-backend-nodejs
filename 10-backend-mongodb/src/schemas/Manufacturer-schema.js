@@ -8,6 +8,6 @@ const manufacturerSchema = new Schema({
 
 });
 
-const manufacturerModel = model('manufacters', manufacturerSchema);
+const Manufacturer = model('manufacters', manufacturerSchema);
 
-module.exports = manufacturerModel;
+module.exports = Manufacturer;
