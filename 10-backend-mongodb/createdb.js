@@ -20,18 +20,8 @@ const createdb = async () => {
     await Manufacturer.deleteMany({});
 
     console.log('Llenando las colecciones...');
-    const newManufacturers = await Manufacturer.insertMany(manufacturers);
-
-    const newProducts = products.map( product => {
-        const manufacturer = newManufacturers.filter( manufacturer =>
-            manufacturer.cif === product.manufacturer)[0];
-        const { _id } = manufacturer;
-        return {
-            ...product,
-            manufacturer: { _id }
-        }
-    });
-    await Product.insertMany(newProducts);
+    await Manufacturer.insertMany(manufacturers);
+    await Product.insertMany(products);
 
     db.disconnect();
     console.log('Conexión finalizada.');
