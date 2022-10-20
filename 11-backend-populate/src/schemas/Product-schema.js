@@ -8,8 +8,7 @@ const productSchema = new Schema(
             _id: {
                 type: Schema.Types.ObjectId,
                 ref: 'Manufacturer'
-            },
-            name: String
+            }
         },
         price: Number,
         color: String
