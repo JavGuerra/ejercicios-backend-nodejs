@@ -2,10 +2,10 @@ ENUNCIADO MONGODB SIMPLE
 
 Realizaremos una implantación que comtemplará los siguientes scripts:
 
-- createManufacters: Daremos de alta una nueva colección en nuestra base de datos
-llamada "manufacters". Aquí tendremos que importar el array de los fabricantes
+- createManufacturers: Daremos de alta una nueva colección en nuestra base de datos
+llamada "manufacturers". Aquí tendremos que importar el array de los fabricantes
 que se encontrará en modules para posteriormente usarlo para dar de alta cada uno
-de los fabricantes en nuestra colección manufacters.
+de los fabricantes en nuestra colección manufacturers.
 Añadirá de manera independiente otro fabricante no contemplado en nuestro array
 de fabricantes (con el mismo formato)
 
@@ -23,7 +23,7 @@ sean BMW (Q60174112) para que pasen a costar todos 33000
 - deleteProducts: Borraremos el primer producto de la colección que sea azul.
 Borraremos todos aquellos productos que sean rojos.
 
-- deleteManufacters: Este script borrará la colección Manufacters.
+- deleteManufacturers: Este script borrará la colección Manufacturers.
 
 - createProducts: Crear un script de borrar la colección de productos y crearla de nuevo.
 

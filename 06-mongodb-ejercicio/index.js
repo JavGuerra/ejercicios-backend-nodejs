@@ -16,17 +16,17 @@ app.use((req, res, next) => {
 mongoDB.connectDB((err, client) => {
     if (err) throw err;
 
-    //  http:localhost:3000/createmanufacters
-    const DBRouterCreateManufacters = require('./routes/createManufacters');
-    app.use('/createmanufacters', DBRouterCreateManufacters);
+    //  http:localhost:3000/createmanufacturers
+    const DBRouterCreateManufacturers = require('./routes/createManufacturers');
+    app.use('/createmanufacturers', DBRouterCreateManufacturers);
 
     //  http:localhost:3000/createproducts
     const DBRouterCreateProducts = require('./routes/createProducts');
     app.use('/createproducts', DBRouterCreateProducts);
 
-    //  http:localhost:3000/deletemanufacters
-    const DBRouterDeleteManufacters = require('./routes/deleteManufacters');
-    app.use('/deletemanufacters', DBRouterDeleteManufacters);
+    //  http:localhost:3000/deletemanufacturers
+    const DBRouterDeleteManufacturers = require('./routes/deleteManufacturers');
+    app.use('/deletemanufacturers', DBRouterDeleteManufacturers);
 
     //  http:localhost:3000/deleteproducts
     const DBRouterDeleteProducts = require('./routes/deleteProducts');

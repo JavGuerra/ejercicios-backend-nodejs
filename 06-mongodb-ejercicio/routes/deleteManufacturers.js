@@ -3,7 +3,7 @@ const router = express.Router();
 
 const mongoDB = require('../services/DB');
 const db = mongoDB.getDB();
-const collection = db.collection('manufacters');
+const collection = db.collection('manufacturers');
 
 router.get('/', (req, res) => {
 

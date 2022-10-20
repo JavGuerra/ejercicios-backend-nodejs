@@ -5,6 +5,13 @@ const productSchema = new Schema(
         _id: String,
         name: String,
         manufacturer: String,
+        // manufacturer: {
+        //     _id: {
+        //         type: Schema.Types.ObjectId,
+        //         ref: 'Manufacturer'
+        //     },
+        //     name: String
+        // },
         price: Number,
         color: String
     },

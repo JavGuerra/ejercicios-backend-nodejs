@@ -1,27 +1,27 @@
 const express = require('express');
 const router = express.Router();
-const manufacters = require('../manufacters');
+const manufacturers = require('../manufacturers');
 
 const mongoDB = require('../services/DB');
 const db = mongoDB.getDB();
-const collection = db.collection('manufacters');
+const collection = db.collection('manufacturers');
 
 let myObj;
 
 router.get('/', (req, res) => {
 
-    // Usar la ruta /deleteManufacters
+    // Usar la ruta /deleteManufacturers
     // collection.drop(function(err, delOK) {
     //     if (err) throw err;
     //     if (delOK) console.log("Colección borrada.");
     // });
 
-    db.createCollection('manufacters', function(err, res){
+    db.createCollection('manufacturers', function(err, res){
         if (err) throw err;
         console.log('Colección añadida.');
     });
 
-    collection.insertMany(manufacters, function(err, res){
+    collection.insertMany(manufacturers, function(err, res){
         if (err) throw err;
         console.log('Documentos añadidos.');
     });

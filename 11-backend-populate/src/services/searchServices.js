@@ -8,6 +8,7 @@ const getFilteredProducts = async (modelo, color, precio, marca) => {
     if (marca ) filter.manufacturer = { $regex: `.*${marca}.*` };
     
     return await Product.find(filter).exec();
+    // return await Product.find(filter).populate('manufacturer._id').exec();
 }
 
 module.exports = { getFilteredProducts };

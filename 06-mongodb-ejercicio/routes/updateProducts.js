@@ -19,7 +19,7 @@ router.get('/', (req, res) => {
         console.log('Documento actualizado.');
     });
 
-    myQuery = {"manufacter": "Q60174112"};
+    myQuery = {"manufacturer": "Q60174112"};
     newValues = { $set: {
         'price': 33000
     }};
