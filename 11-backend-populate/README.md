@@ -1,6 +1,13 @@
 # Back end MongoDB
 
-Consulta la BBDD 'Concesionario' en MongoDB usando Mongoose y populate.
+Backend para consulta a la BBDD 'Concesionario' en MongoDB usando Mongoose y populate.
+
+Por Javier Guerra, octubre 2022.
+
+## Errores devueltos (response_code)
+0. OK. La consulta se ha realizado satisfactoriamente.
+1. No ha habido coincidencias en la consulta. Resultado vacío.
+2. Faltan uno o varios parámetros para realizar la consulta.
 
 ## Rutas
 
@@ -24,3 +31,5 @@ http://localhost:3000/products/{manufacturer}
 __Filtrado de productos__:  
 http://localhost:3000/search?modelo={modelo}&color{color}&precio={precio}&marca={marca}  
 // TODO El filtrado por `marca` no funciona con populate
+
+
