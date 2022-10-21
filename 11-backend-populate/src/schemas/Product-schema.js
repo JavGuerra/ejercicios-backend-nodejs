@@ -2,16 +2,15 @@ const { model, Schema } = require('mongoose');
 
 const productSchema = new Schema(
     {
-        _id: String,
         name: String,
-        manufacturer: [{
+        manufacturer: {
             _id: {
                 type: Schema.Types.ObjectId,
                 ref: 'Manufacturer'
             }
-        }],
-        price: Number,
-        color: String
+        },
+        color: String,
+        price: Number
     },
     { versionKey: false }
 );
