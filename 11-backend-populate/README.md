@@ -11,7 +11,6 @@ http://localhost:3000/manufacturers/
 
 __Un único fabricante por su `cif`__: 
 http://localhost:3000/manufacturers/<cif>
-B60258512
 
 ### Productos
 
