@@ -24,4 +24,4 @@ localhost:3000/products/<manufacturer>
 
 __Filtrado de productos__:
 localhost:3000/search?modelo=<modelo>&color<color>&precio=<precio>&marca=<marca>  
-// TODO El filtrado por `marca` funciona con populate
+// TODO El filtrado por `marca` no funciona con populate
