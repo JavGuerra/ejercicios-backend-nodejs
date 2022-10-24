@@ -28,7 +28,7 @@ const createdb = async () => {
         const { _id, cif } = manufacturer;
         return {
             ...product,
-            manufacturer: { _id, cif }
+            manufacturer: { ref: _id, cif }
         };
     });
     await Product.insertMany(newProducts);
