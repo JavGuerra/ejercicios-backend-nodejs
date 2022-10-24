@@ -5,9 +5,17 @@ const getFilteredProducts = async (modelo, color, precio, marca) => {
     if (modelo) filter.name  = { $regex: `.*${modelo}.*` };
     if (color ) filter.color = { $regex: `.*${color}.*`  };
     if (precio) filter.price = { $lte: precio };
-    // if (marca ) filter.manufacturer = { $regex: `.*${marca}.*` };
+    if (marca ) filter.manufacturer = { "cif": marca }; // TODO Error
+
+    console.log(filter);
     
-    return await Product.find(filter).populate('manufacturer._id').exec();
+    let products = await Product.find(filter).populate('manufacturer._id').exec();
+
+    // return marca
+    //     ? products.filter(elem => elem.manufacturer.cif === marca)
+    //     : products;
+
+    return products;
 }
 
 module.exports = { getFilteredProducts };

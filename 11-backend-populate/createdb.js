@@ -25,10 +25,10 @@ const createdb = async () => {
     const newProducts = products.map( product => {
         const manufacturer = newManufacturers.filter(
             manufacturer => manufacturer.cif === product.manufacturer)[0];
-        const { _id } = manufacturer;
+        const { _id, cif } = manufacturer;
         return {
             ...product,
-            manufacturer: { _id }
+            manufacturer: { _id, cif }
         };
     });
     await Product.insertMany(newProducts);
