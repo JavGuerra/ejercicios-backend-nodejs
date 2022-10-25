@@ -1,0 +1,24 @@
+{
+  "name": "12-backend-paginate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "NODE_ENV=development nodemon ./src/index.js",
+    "devWin": "set NODE_ENV=development&& nodemon /src/index.js"
+  },
+  "author": "Javier Guerra",
+  "license": "ISC",
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.5",
+    "mongoose-paginate-v2": "^1.7.1"
+  },
+  "devDependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "nodemon": "^2.0.19"
+  }
+}
