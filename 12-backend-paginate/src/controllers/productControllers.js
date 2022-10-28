@@ -8,7 +8,7 @@ const getAllProducts = async (req, res) => {
     if (isNaN(limit) || limit < 1) limit = 5;
 
     const result = await productServices.getAllProducts(page, limit);
-    const response_code = (result.length) ? 0 : 1;
+    const response_code = (result.docs.length) ? 0 : 1;
     res.json({response_code, result});
 };
 
