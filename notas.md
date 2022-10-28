@@ -35,3 +35,7 @@ https://mongoosejs.com/docs/populate.html#query-conditions
 
 https://www.mongodb.com/blog/post/6-rules-of-thumb-for-mongodb-schema-design-part-3
 
+populate + paginate
+https://stackoverflow.com/questions/48114129/populate-with-mongoose-pagination
+https://github.com/Automattic/mongoose/issues/7432
+

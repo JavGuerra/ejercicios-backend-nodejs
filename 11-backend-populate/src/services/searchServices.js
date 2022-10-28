@@ -6,10 +6,10 @@ const getFilteredProducts = async (modelo, color, precio, marca) => {
     if (modelo) filter.name  = { $regex: `.*${modelo}.*` };
     if (color ) filter.color = { $regex: `.*${color}.*`  };
     if (precio) filter.price = { $lte: precio };
-    if (marca ) filter["manufacturer.cif"] = marca;
+    if (marca ) filter["manufacturer.name"] = marca;
     
     return await Product.find( filter, {_id: 0} )
-        .populate( 'manufacturer.ref', '-_id name address' ).exec();
+        .populate( 'manufacturer.ref', '-_id cif address' ).exec();
 
         
     // return marca

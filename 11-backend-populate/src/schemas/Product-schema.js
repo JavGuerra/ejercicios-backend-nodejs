@@ -5,7 +5,7 @@ const productSchema = new Schema(
         name: String,
         manufacturer: { 
             ref: { type: Schema.Types.ObjectId, ref: 'Manufacturer'},
-            cif: String
+            name: String
         },
         color: String,
         price: Number

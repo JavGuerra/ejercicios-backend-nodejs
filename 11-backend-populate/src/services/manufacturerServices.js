@@ -5,7 +5,7 @@ const getAllManufacturers = async () => {
 }
 
 const getManufacturer = async (marca) => {
-    return await Manufacturer.findOne({"cif": marca}).exec();
+    return await Manufacturer.findOne({"name": marca}).exec();
 }
 
 module.exports = { getAllManufacturers, getManufacturer };
