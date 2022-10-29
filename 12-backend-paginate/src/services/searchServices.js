@@ -6,7 +6,7 @@ const getFilteredProducts = async (modelo, color, precio, marca, page, limit) =>
     if (modelo) filter.name  = { $regex: `.*${modelo}.*` };
     if (color ) filter.color = { $regex: `.*${color}.*`  };
     if (precio) filter.price = { $lte: precio };
-    if (marca ) filter["manufacturer.name"] = marca;
+    if (marca ) filter["manufacturer.name"] = { $regex: `.*${marca}.*` };
 
     const populate = {path: 'manufacturer.ref', select: '-_id cif address'};
 
