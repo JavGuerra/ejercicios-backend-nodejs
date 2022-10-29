@@ -13,7 +13,7 @@ const getFilteredProducts = async (modelo, color, precio, marca) => {
 
         
     // return marca
-    //     ? products.filter(elem => elem.manufacturer.cif === marca)
+    //     ? products.filter(elem => elem.manufacturer.name.includes(marca))
     //     : products;
 }
 
