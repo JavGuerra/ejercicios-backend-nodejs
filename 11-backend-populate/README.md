@@ -26,10 +26,6 @@ http://localhost:3000/products/
 
 __Todos los productos de un fabricante por su `manufacturer`__:  
 http://localhost:3000/products/{manufacturer}  
-// TODO No funciona con populate
 
 __Filtrado de productos__:  
-http://localhost:3000/search?modelo={name}&color{color}&precio={price}&marca={manufacturer}  
-// TODO El filtrado por `marca` no funciona con populate
-
-
+http://localhost:3000/search?modelo={name}&color{color}&precio={price}&marca={manufacturer}
