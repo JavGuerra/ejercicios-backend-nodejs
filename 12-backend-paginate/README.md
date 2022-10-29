@@ -1,6 +1,6 @@
 # Back end MongoDB
 
-Backend para consulta a la BBDD 'Concesionario' en MongoDB usando Mongoose y populate.
+Backend para consulta a la BBDD 'Concesionario' en MongoDB usando Mongoose, populate y paginate.
 
 Por Javier Guerra, octubre 2022.
 
@@ -23,10 +23,6 @@ http://localhost:3000/manufacturers/{cif}
 
 __Todos los productos__:  
 http://localhost:3000/products/
-
-__Todos los productos de un fabricante por su `manufacturer`__:  
-http://localhost:3000/products/{manufacturer}  
-// TODO No funciona con populate
 
 __Filtrado de productos__:  
 http://localhost:3000/search?modelo={name}&color{color}&precio={price}&marca={manufacturer}  
