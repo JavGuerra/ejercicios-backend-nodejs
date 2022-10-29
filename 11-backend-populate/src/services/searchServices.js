@@ -11,7 +11,7 @@ const getFilteredProducts = async (modelo, color, precio, marca) => {
     return await Product.find( filter, {_id: 0} )
         .populate( 'manufacturer.ref', '-_id cif address' ).exec();
 
-        
+    // Filtrado posterior a populate innecesario con 'manufacturer.name' 
     // return marca
     //     ? products.filter(elem => elem.manufacturer.name.includes(marca))
     //     : products;
