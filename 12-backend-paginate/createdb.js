@@ -26,9 +26,7 @@ const createdb = async () => {
         const manufacturer = newManufacturers.filter(
             manufacturer => manufacturer.cif === product.manufacturer)[0];
         const { _id, name } = manufacturer;
-        return {
-            ...product,
-            manufacturer: { ref: _id, name }
+        return { ...product, manufacturer: { ref: _id, name }
         };
     });
     await Product.insertMany(newProducts);
