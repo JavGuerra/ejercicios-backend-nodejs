@@ -15,7 +15,17 @@ const getFilteredProducts = async (req, res) => {
   let result = '';
 
   if (!response_code) {
-    result = await searchServices.getFilteredProducts(modelo, color, precio, marca, page, limit);
+
+    const filter = {};
+    if (modelo) filter.name  = { $regex: `.*${modelo}.*` };
+    if (color ) filter.color = { $regex: `.*${color}.*`  };
+    if (precio) filter.price = { $lte: precio };
+    if (marca ) filter["manufacturer.name"] = { $regex: `.*${marca}.*` };
+
+    const populate = { path: 'manufacturer.ref', select: '-_id cif address' };
+    const options  = { page, limit, populate };
+
+    result = await searchServices.getFilteredProducts(filter, options);
     response_code = (result.docs.length) ? 0 : 1;
   }
 

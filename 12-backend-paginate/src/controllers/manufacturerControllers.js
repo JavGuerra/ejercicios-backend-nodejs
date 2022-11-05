@@ -11,7 +11,7 @@ const getManufacturer = async (req, res) => {
     let response_code = (marca) ? 0 : 2;
     let result = '';
     if (!response_code) {
-        result = await manufacturerServices.getManufacturer(marca);
+        result = await manufacturerServices.getManufacturer({ "name": marca });
         response_code = (result.length) ? 0 : 1;
     }
     res.json({response_code, result});

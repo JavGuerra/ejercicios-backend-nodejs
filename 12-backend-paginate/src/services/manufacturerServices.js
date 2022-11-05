@@ -4,8 +4,8 @@ const getAllManufacturers = async () => {
     return await Manufacturer.find({}).exec();
 }
 
-const getManufacturer = async (marca) => {
-    return await Manufacturer.findOne({"name": marca}).exec();
+const getManufacturer = async (filter) => {
+    return await Manufacturer.findOne(filter).exec();
 }
 
 module.exports = { getAllManufacturers, getManufacturer };
