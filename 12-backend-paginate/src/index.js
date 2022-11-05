@@ -3,7 +3,6 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 
-const searchRoutes = require('./routes/searchRoutes');
 const productRouters = require('./routes/productRoutes');
 const manufacturerRouters = require('./routes/manufacturerRoutes');
 
@@ -23,7 +22,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/search', searchRoutes);
 app.use('/products', productRouters);
 app.use('/manufacturers', manufacturerRouters);
 

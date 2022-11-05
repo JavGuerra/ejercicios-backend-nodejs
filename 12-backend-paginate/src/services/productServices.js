@@ -1,7 +1,7 @@
 const Product = require('../schemas/Product-schema');
 
-const getAllProducts = async (filter, options) => {
+const getFilteredProducts = async (filter, options) => {
     return await Product.paginate(filter, options);
 }
 
-module.exports = { getAllProducts };
+module.exports = { getFilteredProducts };
