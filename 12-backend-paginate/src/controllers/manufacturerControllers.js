@@ -7,8 +7,8 @@ const getAllManufacturers = async (req, res) => {
 };
 
 const getManufacturer = async (req, res) => {
-    const marca = req.params.marca.trim().toUpperCase();
-    result = await manufacturerServices.getManufacturer({ "name": marca });
+    const brand = req.params.marca.trim().toUpperCase();
+    result = await manufacturerServices.getManufacturer({ "name": brand });
     response_code = (result.length) ? 0 : 1;
     res.json({response_code, result});
 };
