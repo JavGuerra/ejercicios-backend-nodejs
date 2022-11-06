@@ -39,5 +39,5 @@ populate + paginate
 https://stackoverflow.com/questions/48114129/populate-with-mongoose-pagination
 https://github.com/Automattic/mongoose/issues/7432
 
-Solucioón a problemas frecuentes en Git.
+Solución a problemas frecuentes en Git.
 https://ohshitgit.com/
